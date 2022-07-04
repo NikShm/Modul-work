@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "projects": {
+    "freshbeautyapp": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/freshbeautyapp",
+            "index": "src/home.html",
+            "styles": ["src/style.css"],
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.json",
+            "aot": true
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "freshbeautyapp:build"
+          }
+        }
+      }
+    }},
+  "defaultProject": "freshbeautyapp",
+  "cli": {
+    "analytics": "e2ecce9a-6043-4db4-af8d-e8f5df6d7ad6"
+  }
+}

@@ -1,11 +1,13 @@
 {
-  "name": "FrontEnd",
+  "name": "freshbeautyapp",
   "version": "1.0.0",
+  "description": "First Angular 14 Project",
+  "author": "Eugene Popov metanit.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build"
-},
+  },
   "dependencies": {
     "@angular/common": "~14.0.0",
     "@angular/compiler": "~14.0.0",
