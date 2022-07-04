@@ -1,0 +1,36 @@
+<!--<label>Введите имя:</label>-->
+<!--<input [(ngModel)]="name" placeholder="name">-->
+<!--<h1>Добро пожаловать {{name}}!</h1>-->
+<!--<div class="main">-->
+<!--    <h1>My To Do List</h1>-->
+<!--    <label for="addItemInput">What would you like to do today?</label>-->
+
+<!--    <input-->
+<!--        #newItem-->
+<!--        placeholder="add an item"-->
+<!--        (keyup.enter)="addItem(newItem.value); newItem.value = ''"-->
+<!--        class="lg-text-input"-->
+<!--        id="addItemInput"-->
+<!--    />-->
+
+<!--    <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>-->
+
+<!--    <ul>-->
+<!--        <li *ngFor="let item of items">{{item.description}}</li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<div *ngFor="let item of items">
+    <label>Введите имя:</label>
+    <input #newItem (keyup.enter)="change(newItem.value); newItem.value = ''" placeholder="name">
+    <h1>Добро пожаловать {{name}}!</h1>
+</div>
+
+<mat-grid-list cols="5" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let tile of items" style="background: blueviolet">
+<!--            [colspan]="tile.cols"-->
+<!--            [rowspan]="tile.rows"-->
+        <div> <img src="/assets/v32056.png"></div>
+        {{tile.description}}
+    </mat-grid-tile>
+</mat-grid-list>
