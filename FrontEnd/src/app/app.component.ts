@@ -1,59 +1,36 @@
 import { Component } from '@angular/core';
 
 class Item{
-    purchase: string;
-    done: boolean;
+    name: string;
     price: number;
 
-    constructor(purchase: string, price: number) {
+    constructor(name: string, price: number) {
 
-        this.purchase = purchase;
+        this.name = name;
         this.price = price;
-        this.done = false;
     }
 }
 
 @Component({
     selector: 'purchase-app',
     template:
-`<div class="page-header">
-        <h1> Список покупок </h1>
-    </div>
-    <div class="panel">
-        <div class="form-inline">
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input class="form-control" [(ngModel)]="text" placeholder = "Название" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6">
-                    <input type="number" class="form-control" [(ngModel)]="price" placeholder="Цена" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-8">
-                    <button class="btn btn-default" (click)="addItem(text, price)">Добавить</button>
-                </div>
+`    <div class="box-container">
+    <div class="box"  *ngFor="let item of items">
+        <span class="discount">-10%</span>
+        <div class="image">
+            <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="cart-btn">add to cart</a>
+                <a href="#" class="fas fa-share"></a>
             </div>
         </div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Предмет</th>
-                    <th>Цена</th>
-                    <th>Куплено</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of items">
-                    <td>{{item.purchase}}</td>
-                    <td>{{item.price}}</td>
-                    <td><input type="checkbox" [(ngModel)]="item.done" /></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>`,
+        <div class="content">
+            <h3>{{item.name}}</h3>
+            <div class="price">{{item.price}}$</div>
+        </div>
+    </div>
+</div>`,
 })
 export class AppComponent {
    text: string = "";
@@ -61,10 +38,11 @@ export class AppComponent {
 
     items: Item[] =
         [
-            { purchase: "Хлеб", done: false, price: 15.9 },
-            { purchase: "Масло", done: false, price: 60 },
-            { purchase: "Картофель", done: true, price: 22.6 },
-            { purchase: "Сыр", done: false, price:310 }
+            { name: "Unice Pastel Lipstick",price: 15.9 },
+            { name: "L'oreal Paris Color Riche", price: 60 },
+            { name: "Clarins Joli Rouge Lacquer Barra de Labios", price: 22.6 },
+            { name: "Clarins Joli Rouge Brillant", price:310 },
+            { name: "Guerlain Kiss Kiss La Rouge Mat", price:310 }
         ];
     addItem(text: string, price: number): void {
 
