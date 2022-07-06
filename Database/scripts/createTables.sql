@@ -1,4 +1,5 @@
 --database freshbeauty
+-- create database FreshBeauty;
 
 DROP TABLE IF EXISTS brand, product, person;
 DROP TYPE IF EXISTS category, userRole;
