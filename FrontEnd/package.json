@@ -1,6 +1,8 @@
 {
-  "name": "AngularTest",
+  "name": "freshbeautyapp",
   "version": "1.0.0",
+  "description": "First Angular 14 Project",
+  "author": "Eugene Popov metanit.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +13,6 @@
     "@angular/compiler": "~14.0.0",
     "@angular/core": "~14.0.0",
     "@angular/forms": "~14.0.0",
-    "@angular/material": "^14.0.4",
     "@angular/platform-browser": "~14.0.0",
     "@angular/platform-browser-dynamic": "~14.0.0",
     "@angular/router": "~14.0.0",
@@ -19,7 +20,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.0.4",
+    "@angular-devkit/build-angular": "~14.0.0",
     "@angular/cli": "~14.0.0",
     "@angular/compiler-cli": "~14.0.0",
     "@types/node": "~16.11.0",
