@@ -1,6 +1,11 @@
-CREATE TYPE category AS ENUM ('perfumery', 'makeup', 'hair', 'face', 'body and bath', 'for men');
+--database freshbeauty
 
-CREATE TYPE userRole AS ENUM ('customer', 'admin');
+DROP TABLE IF EXISTS brand, product, person;
+DROP TYPE IF EXISTS category, userRole;
+
+CREATE TYPE category AS ENUM ('PERFUMERY', 'MAKEUP', 'HAIR', 'FACE', 'BODY_AND_BATH', 'FOR_MEN');
+
+CREATE TYPE userRole AS ENUM ('CUSTOMER', 'ADMIN');
 
 CREATE TABLE brand
 (
@@ -15,7 +20,7 @@ CREATE TABLE product
     name VARCHAR(128) NOT NULL,
     description TEXT,
     brandId INTEGER REFERENCES brand(id) NOT NULL,
-    price MONEY NOT NULL,
+    price NUMERIC NOT NULL CHECK(price>0),
     category category NOT NULL,
     color CHAR(7) NOT NULL,
     volume VARCHAR(8),

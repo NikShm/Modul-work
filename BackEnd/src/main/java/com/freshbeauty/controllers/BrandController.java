@@ -1,32 +1,28 @@
 package com.freshbeauty.controllers;
 
-import com.freshbeauty.entities.Brand;
-import com.freshbeauty.repositories.BrandRepository;
+import com.freshbeauty.dto.BrandDTO;
 import java.util.List;
 
+import com.freshbeauty.services.brand.impls.BrandServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("brand")
+@RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value = "/api/brands", produces = "application/json")
 public class BrandController {
-    private final BrandRepository brandRepository;
+    private final BrandServiceImpl service;
 
-    public BrandController(BrandRepository brandRepository) {
-        this.brandRepository = brandRepository;
+    public BrandController(BrandServiceImpl service) {
+        this.service = service;
     }
 
-    @GetMapping("/byId/{id}")
-    public BrandDTO get(@PathVariable Integer id) {
-        return brandRepository.findById(id).map(BrandDTO::new).get();
+    @GetMapping("/{id}")
+    public BrandDTO showOne(@PathVariable Integer id) {
+        return service.getOne(id);
     }
 
-    @GetMapping("/list")
-    public List<Brand> getBrands() {
-        return brandRepository.findAll();
-    }
-
-    @PostMapping
-    void addUser(@RequestBody Brand user) {
-        brandRepository.save(user);
+    @GetMapping("/")
+    public List<BrandDTO> showAll() {
+        return service.getAll();
     }
 }
