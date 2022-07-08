@@ -1,19 +1,15 @@
-package com.freshbeauty;
+package com.freshbeauty.config;
 
-import ch.qos.logback.core.Context;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import  org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 
 /*
 @author Микола
-@project AngularTest
+@project FreshBeauty
 @class DataSourceConfig
 @version 1.0.0
 @since 04.07.2022 - 16.56

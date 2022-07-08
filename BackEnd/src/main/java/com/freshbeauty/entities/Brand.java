@@ -5,13 +5,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "brand")
 public class Brand {
-
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", length = 128, nullable = false)
     private String name;
 
     public Integer getId() {
