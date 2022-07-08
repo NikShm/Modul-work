@@ -218,7 +218,7 @@ input[type=text] {
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background:url(https://i.pinimg.com/564x/3c/03/73/3c03730826b8b54ba7441276341e8275.jpg) no-repeat center;
+    background:url(home-bg.jpg) no-repeat center;
     background-size: cover;
 }
 
