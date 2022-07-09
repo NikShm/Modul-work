@@ -8,14 +8,14 @@
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<!-- Font Awesome Icons -->
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Font Awesome Icons -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="products.css">
 
@@ -30,32 +30,32 @@
     <label for="toggler" class="fas fa-bars"></label>
 
     <img class="logo" src="https://i.pinimg.com/564x/f5/e1/40/f5e1403d0dcd4188cf10fdd58591ea3f.jpg" alt="Fresh Beauty" width="65" height="86">
-    <a href="#" class="logoText">
+    <a href="#" class="logoText" style="text-decoration: none;">
         <p id="pANDp"><b>FB</b><br>
             Fresh Beauty</p>
-      </a> 
+    </a>
 
     <nav class="navbar">
         <a href="http://127.0.0.1:5500/index.html">home</a>
         <a href="http://127.0.0.1:5500/index.html#about">about</a>
         <div class="dropdown">
-        <a href="http://127.0.0.1:5500/index.html#products">products ▼</a>
-        <div class="dropdown-content">
-            <a href="#">Perfumery</a>
-            <a href="#">Makeup</a>
-            <a href="#">Hair</a>
-            <a href="#">Face</a>
-            <a href="#">Body and bath</a>
-            <a href="#">For men</a>
-          </div>
+            <a href="http://127.0.0.1:5500/index.html#products">products ▼</a>
+            <div class="dropdown-content">
+                <a href="#">Perfumery</a>
+                <a href="#">Makeup</a>
+                <a href="#">Hair</a>
+                <a href="#">Face</a>
+                <a href="#">Body and bath</a>
+                <a href="#">For men</a>
+            </div>
         </div>
         <a href="http://127.0.0.1:5500/index.html#contact">contact</a>
     </nav>
 
     <div class="icons">
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
-        <a href="#" class="fas fa-user"></a>
+        <a href="#" style="text-decoration: none;" class="fas fa-heart"></a>
+        <a href="#" style="text-decoration: none;" class="fas fa-shopping-cart"></a>
+        <a href="#" style="text-decoration: none;" class="fas fa-user"></a>
     </div>
 
 </header>
@@ -64,256 +64,221 @@
 <section class="products" id="products">
     <h1 class="aboutHeading">Products </h1>
     <br><br>
-      <div class="container">
-      <div class="search-container-products">
-        <form action="#">
-          <input type="text" autocomplete="off" placeholder="Search..." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
+    <div class="container">
+        <div class="search-container-products">
+            <form action="#">
+                <input type="text" autocomplete="off" placeholder="Search..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <form class="dropdownSort" action="#">
+            <select name="" id="">
+                <option value="" disabled selected hidden>&nbsp;&nbsp;Sort by</option>
+                <option value="">Name</option>
+                <option value="">Price</option>
+            </select>
         </form>
-      </div>
-      <br><br><br><br><br>
-      <ul class="dropdownSort">
-        <li><a href="#">Sort By</a>
-            <ul>
-                <li><a href="">Name</a>
-                    <ul>
-                        <li><a href="#">ascending&nbsp;&nbsp;&nbsp;▲</a></li>
-                        <li><a href="#">descending ▼</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Created at</a>
-                    <ul>
-                        <li><a href="#">ascending&nbsp;&nbsp;&nbsp;▲</a></li>
-                        <li><a href="#">descending ▼</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Updated at</a>
-                    <ul>
-                        <li><a href="#">ascending&nbsp;&nbsp;&nbsp;▲</a></li>
-                        <li><a href="#">descending ▼</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Measure</a>
-                    <ul>
-                        <li><a href="#">kg</a></li>
-                        <li><a href="#">l</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Lack</a></li>
-            </ul>
-        </li>
-    </ul>
-    <br><br><br><br><br><br><br><br><br>
-      <div class="side-menu">
-      <div class="col-lg-3 blog-form">
-        <h2 class="blog-sidebar-title"><b>Categories</b></h2>
-        <hr/>
-        <ul class="dropdownS">
-            <li><a href="#">> Brand</a>
-                <ul>
-                    <li><a href="">Name</a></li>
-                </ul>
-            </li>
-        </ul>
-        <br><br><br><br><br>
-        <ul class="dropdownS">
-            <li><a href="#">> Group of goods</a>
-                <ul>
-                    <li><a href="">Name</a></li>
-                    <li><a href="">Name</a></li>
-                    <li><a href="">Name</a></li>
-                    <li><a href="">Name</a></li>
-                </ul>
-            </li>
-        </ul>
-        <br><br><br><br><br>
-        <ul class="dropdownS">
-            <li><a href="#">> Classification</a>
-                <ul>
-                    <li><a href="">Name</a></li>
-                </ul>
-            </li>
-        </ul>
-        <br><br><br><br><br>
-        <ul class="dropdownS">
-            <li><a href="#">> Color</a>
-                <ul>
-                    <li><a href="">Name</a></li>
-                </ul>
-            </li>
-        </ul>
-        <br><br><br><br>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div class="side-menu">
+            <div class="col-lg-3 blog-form">
+                <h2 class="blog-sidebar-title"><b>Categories</b></h2>
+                <hr style="width: 300px;">
+                <form class="dropdownS" action="#">
+                    <select name="">
+                        <option value="" disabled selected hidden>Group by</option>
+                        <option value="saab">Name</option>
+                        <option value="opel">Price</option>
+                    </select>
+                </form>
+                <form class="dropdownS" action="#">
+                    <select name="">
+                        <option value="" disabled selected hidden>Group by</option>
+                        <option value="saab">Name</option>
+                        <option value="opel">Price</option>
+                    </select>
+                </form>
+                <form class="dropdownS" action="#">
+                    <select name="">
+                        <option value="" disabled selected hidden>Group by</option>
+                        <option value="saab">Name</option>
+                        <option value="opel">Price</option>
+                    </select>
+                </form>
+                <form class="dropdownS" action="#">
+                    <select name="">
+                        <option value="" disabled selected hidden>Group by</option>
+                        <option value="saab">Name</option>
+                        <option value="opel">Price</option>
+                    </select>
+                </form>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
 
-        <h2 class="blog-sidebar-title"><b>Filter</b></h2>
-        <hr />
+                <h2 class="blog-sidebar-title"><b>Filter</b></h2>
+                <hr style="width: 300px;">
+                <form class="dropdownS" action="#">
+                    <select name="cars" id="cars">
+                        <option value="" disabled selected hidden>Price</option>
+                        <option value="saab">Name</option>
+                        <option value="opel">Price</option>
+                    </select>
+                </form>
+                <br>
+                <!--<button type="button" class="btn btn-dark btn-lg">Filter</button>-->
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search" aria-label="Receipient's username" aria-describely="basic-addon2">
-            <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+
+
             </div>
-            
         </div>
+        <div class="box-container">
 
-        <p class="tags">Price $4 - $25</p>
-        <button type="button" class="btn btn-dark btn-lg">Filter</button>
+            <div class="box">
+                <span class="discount">-10%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
 
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+            <div class="box">
+                <span class="discount">-15%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
 
+            <div class="box">
+                <span class="discount">-5%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
 
+            <div class="box">
+                <span class="discount">-20%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <span class="discount">-17%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <span class="discount">-3%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <span class="discount">-18%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <span class="discount">-10%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <span class="discount">-5%</span>
+                <div class="image">
+                    <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="cart-btn">add to cart</a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>beauty product</h3>
+                    <div class="price"> $12.99 <span>$15.99</span> </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-   </div>
-    <div class="box-container">
-
-        <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-15%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-5%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-20%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-17%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-3%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-18%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <span class="discount">-5%</span>
-            <div class="image">
-                <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="cart-btn">add to cart</a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>beauty product</h3>
-                <div class="price"> $12.99 <span>$15.99</span> </div>
-            </div>
-        </div>
-
-    </div>
-</div>   
 </section>
 
 <!-- footer section starts  -->
@@ -351,7 +316,7 @@
             <a href="#">+123-456-7890</a>
             <a href="#">example@gmail.com</a>
             <a href="#">mumbai, india - 400104</a>
-            <img src="images/payment.png" alt="">
+            <img width="160px" height="17px" src="https://i.pinimg.com/originals/da/d6/be/dad6beb40adee92929e5f386de5d622f.jpg" alt="">
         </div>
 
     </div>
@@ -379,6 +344,6 @@
 
 
 
-    
+
 </body>
 </html>
