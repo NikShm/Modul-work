@@ -18,7 +18,6 @@ html{
     scroll-padding-top: 6rem;
     overflow-x: hidden;
 }
-
 section{
     padding:2rem 9%;
 }
@@ -37,7 +36,7 @@ section{
     margin-top: 1rem;
     border-radius: 5rem;
     background:#aa5377;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
     color:#fff;
     padding:.9rem 3.5rem;
     cursor: pointer;
@@ -76,7 +75,7 @@ header .logo span{
     text-align: left;
 
     margin-left: 60px;
-    margin-top: 0px;
+    margin-top: 0;
 }
 b{
     font-size: 20px;
@@ -136,10 +135,9 @@ header .fa-bars{
     border-radius: 30px;
     background-color: #f1f1f1;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.25);
     z-index: 1;
 }
-
 .dropdown-content a {
     height: 30px;
     margin-top: 15px;
@@ -170,7 +168,6 @@ header .fa-bars{
 .search-container-products {
     position: relative;
     margin-top: 50px;
-    margin-bottom: 400px;
     margin: auto;
     width: 600px;
     border: none;
@@ -183,7 +180,7 @@ input[type=text] {
     height: 40px;
     padding-left: 15px;
     padding-right: 45px;
-    font-size: 17px;
+    font-size: 16px;
     background: #ffe2ee;
     border: 3px solid #aa5377;
     border-radius: 30px;
@@ -194,7 +191,7 @@ input[type=text] {
     height: 50px;
     padding-left: 15px;
     padding-right: 45px;
-    font-size: 17px;
+    font-size: 16px;
     background: #ffffff;
     border: 3px solid #aa5377;
     border-radius: 30px;
@@ -234,7 +231,7 @@ input[type=text] {
     transition: 1s;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 450px) {
     .search-container {
         float: none;
     }
@@ -310,7 +307,7 @@ input[type=text] {
 .about .row .video-container h3{
     position: absolute;
     top:50%;
-    font-size: 3rem;
+    font-size: 23px;
     background:#fff;
     width:100%;
     padding:1rem 2rem;
@@ -322,12 +319,12 @@ input[type=text] {
 }
 
 .about .row .content h3{
-    font-size: 3rem;
+    font-size: 18px;
     color:rgb(14, 14, 14);
 }
 
 .about .row .content p{
-    font-size: 1.5rem;
+    font-size: 16px;
     color:rgb(99, 99, 99);
     padding:.5rem 0;
     padding-top: 1rem;
@@ -360,31 +357,31 @@ input[type=text] {
 .icons-container .icons h3{
     color:#333;
     padding-bottom: .5rem;
-    font-size: 1.5rem;
+    font-size: 16px;
 }
 
 .icons-container .icons span{
     color:#555;
-    font-size: 1.3rem;
+    font-size: 16px;
 }
 
 .products .side-menu{
-    margin-left: -350px;
+    margin-left: -100px;
     margin-right: -200px;
 }
 
 .products .box-container{
-    margin-top: -460px;
-    margin-left: 100px;
-    margin-right: -350px;
+    margin-top: -330px;
+    margin-left: 250px;
+    margin-right: -50px;
     display: flex;
     flex-wrap: wrap;
-    gap:1.5rem;
 }
 
 
 .products .box-container .box{
-    flex:1 1 30rem;
+    flex:1 1 25rem;
+    margin: 5px;
     box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
     border-radius: .5rem;
     border:.1rem solid rgba(0,0,0,.1);
@@ -395,7 +392,7 @@ input[type=text] {
     position: absolute;
     top:1rem; left:1rem;
     padding:.7rem 1rem;
-    font-size: 2rem;
+    font-size: 17px;
     color:var(--pink);
     background:rgba(255, 51, 153,.05);
     z-index: 1;
@@ -410,7 +407,7 @@ input[type=text] {
 }
 
 .products .box-container .box .image img{
-    height:25rem;
+    height:24rem;
 }
 
 .products .box-container .box:hover .image img{
@@ -420,17 +417,20 @@ input[type=text] {
 .products .box-container .box .image .icons{
     position: absolute;
     bottom:-7rem; left:0; right:0;
+    text-decoration: none;
     display: flex;
 }
 
 .products .box-container .box:hover .image .icons{
     bottom:0;
+    text-decoration: none;
 }
 
 .products .box-container .box .image .icons a{
     height: 5rem;
+    text-decoration: none;
     line-height: 5rem;
-    font-size: 2rem;
+    font-size: 18px;
     width:50%;
     background:var(--pink);
     color:#fff;
@@ -444,6 +444,7 @@ input[type=text] {
 
 .products .box-container .box .image .icons a:hover{
     background:#333;
+    text-decoration: none;
 }
 
 .products .box-container .box .content{
@@ -452,19 +453,19 @@ input[type=text] {
 }
 
 .products .box-container .box .content h3{
-    font-size: 2.5rem;
+    font-size: 23px;
     color:#333;
 }
 
 .products .box-container .box .content .price{
-    font-size: 2.5rem;
+    font-size: 20px;
     color:var(--pink);
     font-weight: bolder;
     padding-top: 1rem;
 }
 
 .products .box-container .box .content .price span{
-    font-size: 1.5rem;
+    font-size: 16px;
     color:#999;
     font-weight: lighter;
     text-decoration: line-through;
@@ -488,18 +489,18 @@ input[type=text] {
 .review .box-container .box .fa-quote-right{
     position: absolute;
     bottom:3rem; right:3rem;
-    font-size: 6rem;
+    font-size: 23px;
     color:#eee;
 }
 
 .review .box-container .box .stars i{
     color:var(--pink);
-    font-size: 2rem;
+    font-size: 18px;
 }
 
 .review .box-container .box p{
     color:#999;
-    font-size: 1.5rem;
+    font-size: 16px;
     line-height: 1.5;
     padding-top: 2rem;
 }
@@ -519,12 +520,12 @@ input[type=text] {
 }
 
 .review .box-container .box .user h3{
-    font-size: 2rem;
+    font-size: 18px;
     color:#333;
 }
 
 .review .box-container .box .user span{
-    font-size: 1.5rem;
+    font-size: 16px;
     color:#999;
 }
 
@@ -554,7 +555,7 @@ input[type=text] {
 
 .contact .row form .box{
     padding:1rem;
-    font-size: 1.7rem;
+    font-size: 18px;
     color:#333;
     text-transform: none;
     border:.1rem solid rgba(0,0,0,.1);
@@ -584,14 +585,14 @@ input[type=text] {
 
 .footer .box-container .box h3{
     color:#333;
-    font-size: 2.5rem;
+    font-size: 20px;
     padding:1rem 0;
 }
 
 .footer .box-container .box a{
     display: block;
     color:#666;
-    font-size: 1.5rem;
+    font-size: 16px;
     padding:1rem 0;
 }
 
@@ -609,7 +610,7 @@ input[type=text] {
     padding:1.5rem;
     margin-top: 1.5rem;
     padding-top: 2.5rem;
-    font-size: 2rem;
+    font-size: 18px;
     color:#333;
     border-top: .1rem solid rgba(0,0,0,.1);
     padding-bottom: 9rem;
@@ -623,36 +624,37 @@ input[type=text] {
     margin-top: 130px;
     margin-bottom: 15px;
     text-align: center;
-    font-size: 4rem;
+    font-size: 18px;
     color:var(--pink);
     background:rgba(255, 51, 153,.05);
 }
 
-.dropdownS {
-    padding: 0;
+.dropdownS select{
+    padding: 5px;
     list-style: none;
-    width: 300px;
+    width: 250px;
+    color: #ffeee2;
     background-color: var(--pink);
     border-radius: 30px;
+    margin-top: 10px;
     margin-bottom: -70px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
-.dropdownS li {
+.dropdownS form select{
     position: relative;
 }
 
-.dropdownS li a {
+.dropdownS form select option{
     color: #ffeee2;
-    text-align: center;
     text-decoration: none;
     display: block;
     padding: 10px;
-    font-size: 20px;
+    font-size: 16px;
     text-align: left;
 }
 
-.dropdownS li ul {
+.dropdownS form select option {
     position: absolute;
     top: 100%;
     margin: 0;
@@ -665,36 +667,14 @@ input[type=text] {
     z-index: 10;
 }
 
-.dropdownS li ul li a {
+.dropdownS form select option {
     text-align: center;
     color: #ffeee2;
     padding: 10px;
     display: block;
     white-space: nowrap;
-    font-size: 20px;
+    font-size: 16px;
     z-index: 10;
-}
-
-.dropdownS li ul li a:hover {
-    background-color: var(--pink);
-    color: #ffeee2;
-    border-radius: 10px;
-}
-
-.dropdownS li ul li ul {
-    left: 100%;
-    top: 0;
-}
-
-ul li:hover>a {
-    background-color: var(--pink);
-    border-radius: 10px;
-    color: #ffeee2 !important;
-}
-
-ul li:hover>ul {
-    display: block;
-    border-radius: 10px;
 }
 
 /* media queries  */
@@ -737,27 +717,27 @@ ul li:hover>ul {
     }
 
     header .navbar a{
-        margin:1.5rem;
-        padding:1.5rem;
+        margin:16px;
+        padding:16px;
         background:#fff;
         border:.1rem solid rgba(0,0,0,.1);
         display: block;
     }
 
     .home .content h3{
-        font-size: 5rem;
+        font-size: 20px;
     }
 
     .home .content span{
-        font-size: 2.5rem;
+        font-size: 18px;
     }
 
     .icons-container .icons h3{
-        font-size: 2rem;
+        font-size: 18px;
     }
 
     .icons-container .icons span{
-        font-size: 1.7rem;
+        font-size: 16px;
     }
 
 }
@@ -775,35 +755,40 @@ ul li:hover>ul {
 }
 
 
-
-.dropdownSort {
+.dropdownSort select{
     padding: 0;
     list-style: none;
-    width: 150px;
+    height: 30px;
+    width: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(255, 255, 255);
     background-color:  var(--pink);
     border-radius: 30px;
-    margin-left: 880px;
-    margin-top: -135px;
-    margin-bottom: -70px;
-    font-size: 20px;
-}
+    margin-top: 20px;
+    margin-left: 95%;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
 
-.dropdownSort li {
+}
+.dropdownSort option {
     position: relative;
     z-index: 1;
 }
 
-.dropdownSort li a {
+.dropdownSort option {
     color: #ffeee2;
+    border-radius: 30px;
+    background-color: #7c3e58;
     text-align: center;
     text-decoration: none;
     display: block;
     padding: 10px;
     width: 150px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
-.dropdownSort li ul {
+.dropdownSort select form{
     position: absolute;
     top: 100%;
     margin: 0;
@@ -814,23 +799,13 @@ ul li:hover>ul {
     background-color: #7c3e58;
 }
 
-.dropdownSort li ul li a {
+.dropdownSort select form option {
     text-align: center;
     color: #ffeee2;
     padding: 10px;
     display: block;
     white-space: nowrap;
-    font-size: 20px;
+    font-size: 16px;
     z-index: 10;
 }
 
-.dropdownSort li ul li a:hover {
-    background-color: var(--pink);
-    color: #ffeee2;
-    border-radius: 10px;
-}
-
-.dropdownSort li ul li ul {
-    left: 100%;
-    top: 0;
-}
