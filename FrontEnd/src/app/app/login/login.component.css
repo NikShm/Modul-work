@@ -20,7 +20,7 @@ body {
 }
 
 .center h1 {
-  font-size: 2em;
+  font-size: 30px;
   padding: 10px;
   border-radius: 5px;
   color: rgb(15, 28, 85);
@@ -46,7 +46,7 @@ body {
   background: none;
   padding: 10px;
   border-radius: 10px;
-  font-size: 1.2em;
+  font-size: 16px;
 }
 .center .inputbox:last-child {
   margin-bottom: 0;
@@ -55,14 +55,14 @@ body {
   position: absolute;
   top: 14px;
   left: 20px;
-  font-size: 1em;
+  font-size: 16px;
   transition: 0.6s;
   font-family: sans-serif;
 }
 .center .inputbox input:focus ~ span,
 .center .inputbox input:valid ~ span {
   transform: translateX(-13px) translateY(-35px);
-  font-size: 1em;
+  font-size: 16px;
 }
 .center .inputbox [type="button"] {
   width: 100%;
