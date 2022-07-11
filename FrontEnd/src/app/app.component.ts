@@ -1,3 +1,16 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'FrontEnd';
+}
+
+
+/*
 import {Component,OnInit} from '@angular/core';
 import {Product} from "./product";
 import {ProductService} from "./product.service";
@@ -36,3 +49,4 @@ export class AppComponent implements OnInit  {
         this.productService.getLastProduct().subscribe((data: Product[]) => {this.products=data;});
     }
 }
+*/
