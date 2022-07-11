@@ -12,6 +12,7 @@ import { CartComponent } from './app/cart/cart.component';
 import { FavouriteComponent } from './app/favourite/favourite.component';
 import {ProductService} from "./product.service";
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 const AppRoutes: Routes = [
   {path: '', component:HomeComponent},
@@ -35,7 +36,8 @@ const AppRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    HttpClientModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
