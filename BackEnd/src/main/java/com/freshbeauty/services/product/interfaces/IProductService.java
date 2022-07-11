@@ -13,8 +13,10 @@ import java.util.List;
  * @since 7/6/2022 - 20.26
  **/
 public interface IProductService {
+
     List<ProductDTO> getAll();
     ProductDTO getOne(Integer id);
     void delete(Integer id);
     List<ProductDTO> getLastProducts(int quantity);
+    List<ProductDTO> getPage(int page, int size);
 }

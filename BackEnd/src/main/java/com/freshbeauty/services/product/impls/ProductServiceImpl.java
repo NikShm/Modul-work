@@ -1,7 +1,6 @@
 package com.freshbeauty.services.product.impls;
 
 import com.freshbeauty.dto.ProductDTO;
-import com.freshbeauty.entities.Product;
 import com.freshbeauty.mappers.ProductMapper;
 import com.freshbeauty.repositories.ProductRepository;
 import com.freshbeauty.services.product.interfaces.IProductService;
@@ -10,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,5 +48,11 @@ public class ProductServiceImpl implements IProductService {
     public List<ProductDTO> getLastProducts(int quantity) {
         Pageable page = PageRequest.of(0, quantity, Sort.by("createdAt").descending());
         return repository.findAll(page).stream().map(mapper::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductDTO> getPage(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
+        return repository.findAll(pageable).stream().map(mapper::toDto).collect(Collectors.toList());
     }
 }

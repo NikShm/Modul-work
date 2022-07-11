@@ -2,6 +2,9 @@ package com.freshbeauty.controllers;
 
 import com.freshbeauty.dto.ProductDTO;
 import com.freshbeauty.services.product.impls.ProductServiceImpl;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +24,11 @@ public class ProductController {
 
     public ProductController(ProductServiceImpl service) {
         this.service = service;
+    }
+
+    @GetMapping("/page/{page}")
+    public List<ProductDTO> findPaginated(@PathVariable Integer page) {
+        return service.getLastProducts(page);
     }
 
     @GetMapping("/")
