@@ -1,6 +1,8 @@
-package com.freshbeauty.services.product.interfaces;
+package com.freshbeauty.services;
 
+import com.freshbeauty.dto.PageDTO;
 import com.freshbeauty.dto.ProductDTO;
+import com.freshbeauty.dto.SearchDTO;
 import com.freshbeauty.entities.Product;
 
 import java.util.List;
@@ -18,5 +20,5 @@ public interface IProductService {
     ProductDTO getOne(Integer id);
     void delete(Integer id);
     List<ProductDTO> getLastProducts(int quantity);
-    List<ProductDTO> getPage(int page, int size);
+    PageDTO<ProductDTO> getPage(SearchDTO search);
 }

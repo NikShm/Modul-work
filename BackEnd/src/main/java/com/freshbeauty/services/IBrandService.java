@@ -1,4 +1,4 @@
-package com.freshbeauty.services.brand.interfaces;
+package com.freshbeauty.services;
 /*
 @author Микола
 @project FreshBeauty

@@ -1,10 +1,11 @@
 package com.freshbeauty.controllers;
 
+import com.freshbeauty.dto.PageDTO;
 import com.freshbeauty.dto.ProductDTO;
-import com.freshbeauty.services.product.impls.ProductServiceImpl;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import com.freshbeauty.dto.SearchDTO;
+import com.freshbeauty.services.impl.ProductServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,18 +21,20 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/products", produces = "application/json")
 public class ProductController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
     private final ProductServiceImpl service;
 
     public ProductController(ProductServiceImpl service) {
         this.service = service;
     }
 
-    @GetMapping("/page/{page}")
-    public List<ProductDTO> findPaginated(@PathVariable Integer page) {
-        return service.getLastProducts(page);
+    @PostMapping("/search")
+    public PageDTO<ProductDTO> search(@RequestBody SearchDTO search) {
+        LOGGER.info("search(search={})", search);
+        return service.getPage(search);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<ProductDTO> showAll() {
         return service.getAll();
     }
