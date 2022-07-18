@@ -13,6 +13,7 @@ import { FavouriteComponent } from './app/favourite/favourite.component';
 import {ProductService} from "./product.service";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const AppRoutes: Routes = [
   {path: '', component:HomeComponent},
@@ -37,7 +38,8 @@ const AppRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(AppRoutes),
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

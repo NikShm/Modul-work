@@ -1,9 +1,8 @@
-package com.freshbeauty.services.brand.impls;
+package com.freshbeauty.services.impl;
 
 import com.freshbeauty.dto.BrandDTO;
 import com.freshbeauty.mappers.BrandMapper;
-import com.freshbeauty.services.brand.interfaces.IBrandService;
-import com.freshbeauty.entities.Brand;
+import com.freshbeauty.services.IBrandService;
 import com.freshbeauty.repositories.BrandRepository;
 import org.springframework.stereotype.Service;
 

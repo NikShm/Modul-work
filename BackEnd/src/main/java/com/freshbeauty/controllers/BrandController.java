@@ -3,7 +3,7 @@ package com.freshbeauty.controllers;
 import com.freshbeauty.dto.BrandDTO;
 import java.util.List;
 
-import com.freshbeauty.services.brand.impls.BrandServiceImpl;
+import com.freshbeauty.services.impl.BrandServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
