@@ -1,27 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule, Routes} from "@angular/router";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './app/products/products.component';
-import { AboutComponent } from './app/about/about.component';
-import { HomeComponent } from './app/home/home.component';
-import { LoginComponent } from './app/login/login.component';
-import { CartComponent } from './app/cart/cart.component';
-import { FavouriteComponent } from './app/favourite/favourite.component';
-import {ProductService} from "./product.service";
+import { ProductsComponent } from './components/products/products.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { CartComponent } from './components/cart/cart.component';
+import { FavouriteComponent } from './components/favourite/favourite.component';
+import {ProductService} from "./services/product.service";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from 'ngx-pagination';
-
-const AppRoutes: Routes = [
-  {path: '', component:HomeComponent},
-  {path: 'about', component:AboutComponent},
-  {path: 'products', component:ProductsComponent},
-  {path: 'login', component:LoginComponent},
-  {path: 'cart', component:CartComponent}
-]
+import { HeaderComponent } from './shared/layout/header/header.component';
+import { FooterComponent } from './shared/layout/footer/footer.component';
+import { ProductComponent } from './components/product/product.component';
+import { AboutIconsComponent } from './shared/layout/about-icons/about-icons.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +26,16 @@ const AppRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     CartComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProductComponent,
+    AboutIconsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(AppRoutes),
     HttpClientModule,
     NgxPaginationModule
   ],
@@ -45,20 +43,3 @@ const AppRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-/*
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { AppComponent }   from './app.component';
-import {ProductService} from "./product.service";
-import { HttpClientModule } from '@angular/common/http';
-@NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpClientModule ],
-    declarations: [ AppComponent ],
-    providers: [ProductService],
-    bootstrap:    [ AppComponent ]
-})
-export class AppModule { }
-*/

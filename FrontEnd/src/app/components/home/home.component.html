@@ -1,0 +1,95 @@
+<app-header></app-header>
+
+<section class="home" id="home">
+  <div class="search-container">
+    <form action="">
+      <input type="text" autocomplete="off" placeholder="Search..." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+  <div class="content">
+    <h3>estee lauder</h3>
+    <span> Futurist Aqua Brilliance </span>
+    <p>Makeup Teint aqua eclat SPF 20/PA+++</p>
+    <a routerLink="/products/8" class="btn">shop now</a>
+  </div>
+
+</section>
+
+<section class="about" id="about">
+
+  <h1 class="heading"> <span> about </span> us </h1>
+
+  <div class="row">
+
+    <div class="video-container">
+      <div  style="height: 400px; width: 100%; padding-top: -50px">
+        <iframe allow="autoplay; gyroscope;"  allowfullscreen height="100%"
+                referrerpolicy="strict-origin" src="https://www.youtube.com/embed/546jjH5vbBc"
+                style="border:0; height:100%; left:0; position: absolute;overflow:hidden; top:0; width:100%"
+                width="100%"></iframe>
+      </div>
+      <h3 style="margin-top: -230px;">fresh beauty</h3>
+    </div>
+
+    <div class="content">
+      <h3>why choose us?</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem cumque sit nemo pariatur corporis perspiciatis aspernatur a ullam repudiandae autem asperiores quibusdam omnis commodi alias repellat illum, unde optio temporibus.</p>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium ea est commodi incidunt magni quia molestias perspiciatis, unde repudiandae quidem.</p>
+      <a routerLink="/about" class="btn">learn more</a>
+    </div>
+
+  </div>
+
+</section>
+
+<app-about-icons></app-about-icons>
+
+<section class="products" id="products">
+
+  <h1 class="heading"> latest <span>products</span> </h1>
+  <div class="box-container">
+    <div class="box" *ngFor="let product of products">
+      <a routerLink="products/{{product.id}}">
+        <span class="discount">-10%</span>
+        <div class="image">
+          <img src="{{product.photoPath}}" alt="">
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="cart-btn">add to cart</a>
+            <a href="#" class="fas fa-share"></a>
+          </div>
+        </div>
+        <div class="content">
+          <h3>{{product.name}}</h3>
+          <div class="price">{{product.price}}$</div>
+        </div>
+      </a>
+      </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+
+  <h1 class="heading"> <span> contact </span> us </h1>
+
+  <div class="row">
+
+    <form action="">
+      <input type="text" placeholder="name" class="box">
+      <input type="email" placeholder="email" class="box">
+      <input type="number" placeholder="number" class="box">
+      <textarea name="" class="box" placeholder="message" id="" cols="30" rows="10"></textarea>
+      <input type="submit" value="send message" class="btn">
+    </form>
+
+    <div class="image">
+      <img src="assets/images/home/contact-img.jpg" alt=""/>
+    </div>
+
+  </div>
+
+</section>
+
+<app-footer></app-footer>
