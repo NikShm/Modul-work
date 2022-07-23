@@ -1,0 +1,243 @@
+<app-header></app-header>
+
+<section class="products" id="products">
+  <h1 class="aboutHeading">Products </h1>
+  <br><br>
+  <div class="container">
+    <div class="search-container-products">
+      <form action="#" >
+        <input [(ngModel)]="search.name" type="text" autocomplete="off" placeholder="Search..." name="search">
+        <button (click)="search.page = 0;getSearch()" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+<!--    <form class="dropdownSort" action="#">-->
+<!--      <select name="Sort by" (change)="setSorted($event)">-->
+<!--        <option value="">&nbsp;&nbsp;Sort by</option>-->
+<!--        <option value="NameUp">Name A>Z</option>-->
+<!--        <option value="NameDown">Name A>Z</option>-->
+<!--        <option value="PriceUp">Price ></option>-->
+<!--        <option value="PriceDown" >Price <</option>-->
+<!--      </select>-->
+<!--    </form>-->
+    <div class="side-menu">
+      <div class="col-lg-3 blog-form">
+        <h2 class="blog-sidebar-title"><b>Categories</b></h2>
+        <hr style="width: 300px;">
+        <form class="dropdownS" action="#">
+          <select name="cars" [(ngModel)]="search.brand">
+            <option value="" disabled selected hidden>Brand</option>
+            <option value="Maybelline New York">Maybelline New York</option>
+            <option value="Loreal Paris">Loreal Paris</option>
+            <option value="Artdeco">Artdeco</option>
+            <option value="Lamel Professional">Lamel Professional</option>
+            <option value="NYX">NYX</option>
+          </select>
+        </form>
+        <form class="dropdownS" action="#">
+          <select name="cars" [(ngModel)]="search.categoryType">
+            <option value="null">Categories</option>
+            <option value="PERFUMERY">Perfumery</option>
+            <option value="MAKEUP">Makeup</option>
+            <option value="HAIR">Hair</option>
+            <option value="FACE">Face</option>
+            <option value="BODY_AND_BATH">Body and bath</option>
+            <option value="FOR_MEN">For men</option>
+          </select>
+        </form>
+        <form class="dropdownS" action="#">
+          <select name="cars" [(ngModel)]="sortValue" (change)="setSorted()">
+            <option value="" >Sort by</option>
+            <option value="NameUp">Name A>Z</option>
+            <option value="NameDown">Name A>Z</option>
+            <option value="PriceUp">Price ></option>
+            <option value="PriceDown" >Price <</option>
+          </select>
+        </form>
+<!--        <form class="dropdownS" action="#">-->
+<!--          <select name="cars">-->
+<!--            <option value="" disabled selected hidden>Group by</option>-->
+<!--            <option value="saab">Name</option>-->
+<!--            <option value="opel">Price</option>-->
+<!--          </select>-->
+<!--        </form>-->
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+
+        <h2 class="blog-sidebar-title"><b>Filter</b></h2>
+        <hr style="width: 300px;">
+        <form class="dropdownS" action="#">
+          <select name="cars" id="cars">
+            <option value="" disabled selected hidden>Price</option>
+            <option value="saab">Name</option>
+            <option value="opel">Price</option>
+          </select>
+        </form>
+        <br>
+        <button type="button" class="btn btn-dark btn-lg" (click)="getSearch()">Apply</button>
+        <button type="button" class="btn btn-dark btn-lg" (click)="clear()">Clear</button>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+
+
+      </div>
+    </div>
+    <div class="box-container">
+
+      <div class="box" *ngFor="let product of products | paginate: { itemsPerPage: search.pageSize, currentPage: search.page, totalItems: allProduct}">
+        <a routerLink="/products/{{product.id}}">
+        <span class="discount">-10%</span>
+        <div class="image">
+          <img src="{{product.photoPath}}" alt="">
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="cart-btn">add to cart</a>
+            <a href="#" class="fas fa-share"></a>
+          </div>
+        </div>
+        <div class="content">
+          <h3>{{product.name}}</h3>
+          <div class="price"> {{product.price}} <span>$15.99</span> </div>
+        </div>
+      </a>
+      </div>
+      <div>
+      <button class="image" (click)="getFirst()">First Page</button>
+      <pagination-controls previousLabel="Previous"
+                           nextLabel="Next" (pageChange)="search.page = $event.valueOf() - 1; getSearch()">
+      </pagination-controls>
+      <button class="image" (click)="getLast()">Last Page</button>
+      </div>
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-15%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-5%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-20%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-17%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-3%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-18%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-10%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="box">-->
+<!--        <span class="discount">-5%</span>-->
+<!--        <div class="image">-->
+<!--          <img src="https://i.pinimg.com/564x/a3/af/e1/a3afe1c2cb803c4911cb71d64d268b0d.jpg" alt="">-->
+<!--          <div class="icons">-->
+<!--            <a href="#" class="fas fa-heart"></a>-->
+<!--            <a href="#" class="cart-btn">add to cart</a>-->
+<!--            <a href="#" class="fas fa-share"></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--          <h3>beauty product</h3>-->
+<!--          <div class="price"> $12.99 <span>$15.99</span> </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

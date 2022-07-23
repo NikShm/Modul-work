@@ -1,0 +1,38 @@
+<header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <div class="logo">
+        <img class="logo-img" src="assets/images/general/logo.png" alt="Fresh Beauty"/>
+        <a href="#">
+            <strong>
+                <span id="short-name">FB</span>
+                <br>
+                <span id="full-name">Fresh Beauty</span>
+            </strong>
+        </a>
+    </div>
+
+    <nav class="navbar">
+        <a routerLink="/" fragment="home">Home</a>
+        <a routerLink="/" fragment="about">About</a>
+        <div class="dropdown-nav">
+            <a routerLink="/" fragment="products">Products ▼</a>
+            <div class="dropdown-content dropdown-content-nav">
+                <a routerLink="/products">Perfumery</a>
+                <a routerLink="/products">Makeup</a>
+                <a routerLink="/products">Hair</a>
+                <a routerLink="/products">Face</a>
+                <a routerLink="/products">Body and bath</a>
+                <a routerLink="/products">For men</a>
+            </div>
+        </div>
+        <a routerLink="/" fragment="contact">Contact</a>
+    </nav>
+
+    <div class="icons">
+        <a href="#" class="fas fa-heart"></a>
+        <a routerLink="/cart" class="fas fa-shopping-cart"></a>
+        <a routerLink="/login" class="fas fa-user"></a>
+    </div>
+</header>

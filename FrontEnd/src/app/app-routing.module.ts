@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { ProductsComponent } from './components/products/products.component';
+import { LoginComponent } from './components/login/login.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ProductComponent } from './components/product/product.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'products', component: ProductsComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'cart', component: CartComponent},
+  {path: 'products/:id', component: ProductComponent}
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    anchorScrolling: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
