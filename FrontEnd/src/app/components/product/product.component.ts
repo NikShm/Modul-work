@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  product!: Product;
+  public product!: Product;
 
 
   constructor(private route: ActivatedRoute, private productService: ProductService,
@@ -20,8 +20,29 @@ export class ProductComponent implements OnInit {
     this.getProduct();
   }
 
-  getProduct(): void {
+  private getProduct(): void {
     const id = this.route.snapshot.paramMap.get('id') ?? '';
     this.productService.getOneProduct(id).subscribe(product => this.product = product);
+  }
+
+  public showActions() {
+    document.getElementById("dropdown-content-actions")?.classList.toggle("show");
+    document.getElementById("actions")?.classList.remove("btn-dropdown-not-active");
+    document.getElementById("actions")?.classList.toggle("btn-dropdown-active");
+  }
+
+  @HostListener('window:click', ['$event'])
+  onClick(event: MouseEvent) {
+    if (!(<HTMLElement>event.target).matches('#actions')) {
+      const dropdown = document.getElementById("dropdown-content-actions");
+      const button = document.getElementById("actions");
+      if (dropdown?.classList.contains('show')) {
+        dropdown.classList.remove('show');
+      }
+      if (button?.classList.contains('btn-dropdown-active')) {
+        button.classList.remove('btn-dropdown-active');
+        button.classList.toggle('btn-dropdown-not-active');
+      }
+    }
   }
 }
