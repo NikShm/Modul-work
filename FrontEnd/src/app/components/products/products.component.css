@@ -145,6 +145,16 @@ header .fa-bars{
   border-radius: 30px;
 }
 
+.AddTo{
+  width: 180px;
+  height: 55px;
+  background-color: #aa5377;
+  cursor: pointer;
+}
+.AddTo:hover{
+  background-color: #333;
+}
+
 .search-container-products {
   position: relative;
   margin-top: 50px;
@@ -343,6 +353,7 @@ input[type=text] {
   color:#555;
   font-size: 16px;
 }
+
 
 .products .side-menu{
   margin-left: 70px;
@@ -551,6 +562,8 @@ input[type=text] {
   height: 15rem;
   resize: none;
 }
+
+
 
 .footer .box-container{
   display: flex;

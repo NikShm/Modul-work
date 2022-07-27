@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FavouriteService} from "../favouriteService/favourite.service";
+import { ActivatedRoute } from '@angular/router';
+import {Product} from "../../models/product";
+import {CartService} from "../cartService/cart.service";
+import {Page} from "../../models/page";
+import {HttpClient} from "@angular/common/http";
+import {Search} from "../../models/search";
 
 @Component({
   selector: 'app-favourite',
@@ -6,10 +13,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favourite.component.css']
 })
 export class FavouriteComponent implements OnInit {
+    @Input() quantity: number = 0;
+    products = this.favouriteService.getItemsFromFav();
+    pageFav = {page: 0, pageSize: 5, allProduct: 0, pageCount: 1}
 
-  constructor() { }
+  constructor(
+      private http: HttpClient,
+      private route: ActivatedRoute,
+      private favouriteService: FavouriteService,
+      private cartService: CartService,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  addToCart(product: Product) {
+     this.cartService.addToCart(product);
+     window.alert('Your product has been added to the cart!');
+  }
+
+  clearFavourite(){
+      this.favouriteService.clearFavourite();
+  }
+
+  delFromFavourite(product: Product): void {
+      const index: number = this.products.indexOf(product);
+      this.favouriteService.delFromFavourite(index);
+      window.alert('Your product will be delete from the favourite!');
+  }
 }

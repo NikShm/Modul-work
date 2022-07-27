@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductService } from 'src/app/services/product.service';
 
+import {CartService} from "../cartService/cart.service";
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -14,7 +15,7 @@ export class ProductComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private productService: ProductService,
-    private location: Location) { }
+    private location: Location, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getProduct();
@@ -44,5 +45,10 @@ export class ProductComponent implements OnInit {
         button.classList.toggle('btn-dropdown-not-active');
       }
     }
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    window.alert('Your product has been added to the cart!');
   }
 }

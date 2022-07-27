@@ -1,26 +1,23 @@
 * {
-  box-sizing: border-box;
 }
 
 body {
-  margin-top: 100px;
+  padding-top: 200px;
+  padding-bottom: 98%;
   width: 100%;
-  height: 100%;;
-  padding: 1px;
+  height: 100%;
   background: linear-gradient(0deg, #aa5377, rgb(15, 28, 85));
   font-family: 'Roboto', sans-serif;
 }
 
 .shopping-cart {
+  margin: auto;
   width: 750px;
-  height: 70%;
-  margin: 80px auto;
+  height: auto;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
 
-  display: flex;
-  flex-direction: column;
 }
 
 .title {
@@ -57,11 +54,35 @@ body {
   padding: 5px;
   margin-left: 630px;
   margin-top: 90px;
+  cursor: pointer;
   margin-bottom: 20px;
   background: linear-gradient(40deg, rgb(8, 23, 72), #8f4461, rgb(8, 23, 72));
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.70);
   color: #ffffff;
 }
+
+.order2{
+  position: absolute;
+  width: 120px;
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+  margin-left: 500px;
+  margin-top: 90px;
+  margin-bottom: 20px;
+  background: linear-gradient(40deg, rgb(8, 23, 72), #8f4461, rgb(8, 23, 72));
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.70);
+  color: #ffffff;
+}
+
+.order:hover{
+  box-shadow: inset 1px 2px 3px 0px rgba(0,0,0,70);
+}
+
+.order2:hover{
+  box-shadow: inset 1px 2px 3px 0px rgba(0,0,0,70);
+}
+
 .buttons {
   position: relative;
   padding-top: 30px;
@@ -97,30 +118,27 @@ body {
   animation-fill-mode: forwards;
 }
 
-@keyframes animate {
-  0%   { background-position: left;  }
-  50%  { background-position: right; }
-  100% { background-position: right; }
-}
-
 .image {
+  max-width: 200px;
+  text-align: center;
+  width: 200px;
   margin-top: -10px;
-  margin-left: -30px;
-  margin-right: 50px;
+  margin-left: -60px;
 }
 
-/*Let’s add some basic style to  product name and description.*/
 .description {
+  position: absolute;
   padding-top: 10px;
-  margin-right: 150px;
-  width: 130px;
+  margin-left: 220px;
+  margin-right: 20px;
+  width: 200px;
 }
 
 .description span {
+  width: 200px;
   display: block;
   font-size: 14px;
   color: #43484D;
-  margin-right: 0px;
   font-weight: 400;
 }
 
@@ -136,7 +154,7 @@ body {
 .quantity {
   padding-top: 20px;
   margin-right: 60px;
-  margin-left: 80px;
+  margin-left: 250px;
 }
 .quantity input {
   -webkit-appearance: none;
@@ -180,13 +198,14 @@ span img:hover{
   font-size: 16px;
   color: #43484D;
   font-weight: 300;
+  margin-right: 30px;
 }
 
 .total-price2 {
   width: 83px;
   padding-top: 23px;
   padding-bottom: 23px;
-  margin-left: -6px;
+  margin-left: 15px;
   font-size: 16px;
   color: #43484D;
   font-weight: 300;
@@ -200,28 +219,4 @@ span img:hover{
   color: #43484D;
   font-weight: 300;
 }
-@media (max-width: 800px) {
-  .shopping-cart {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-  }
-  .item {
-    height: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .image img {
-    width: 50%;
-  }
-  .image,
-  .quantity,
-  .description {
-    width: 100%;
-    text-align: center;
-    margin: 6px 0;
-  }
-  .buttons {
-    margin-right: 20px;
-  }
-}
+

@@ -51,21 +51,19 @@
   <h1 class="heading"> latest <span>products</span> </h1>
   <div class="box-container">
     <div class="box" *ngFor="let product of products">
-      <a routerLink="products/{{product.id}}">
-        <span class="discount">-10%</span>
         <div class="image">
           <img src="{{product.photoPath}}" alt="">
           <div class="icons">
             <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="cart-btn">add to cart</a>
-            <a href="#" class="fas fa-share"></a>
+            <a routerLink="/#products" class="cart-btn"><button class="AddTo" type="button" (click)="addToCart(product)"><p style="font-size: 16px ;color: #ffffff">Add to cart</p></button></a>
+            <a routerLink="products/{{product.id}}" class="fas fa-share"></a>
           </div>
         </div>
         <div class="content">
           <h3>{{product.name}}</h3>
           <div class="price">{{product.price | currency:'USD'}}</div>
         </div>
-      </a>
+
       </div>
   </div>
 </section>
