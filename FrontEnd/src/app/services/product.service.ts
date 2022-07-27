@@ -11,6 +11,8 @@ import {Page} from "../models/page";
 })
 export class ProductService {
 
+    searchParameter =new Search(null, "", 0, 0, "name", "ASC", 0, 6, null);
+
     constructor(private http: HttpClient) {
     }
 
@@ -69,11 +71,22 @@ export class ProductService {
         }));
     }
 
-    search(search:Search): Observable<Page> {
-        console.log(search)
-        return this.http.post('http://localhost:8080/api/products/search',search).pipe(map((data: any) => {
+    setSearchParameter(search:Search){
+        this.searchParameter = search;
+    }
+    getSearchParameter(){
+        return this.searchParameter;
+    }
+
+    searchHomePage(text:string){
+        this.searchParameter.name = text;
+    }
+
+    search(): Observable<Page> {
+        console.log(this.searchParameter)
+        return this.http.post('http://localhost:8080/api/products/search',this.searchParameter).pipe(map((data: any) => {
             console.log(data)
-            return new Page(data.content,data.pageCount, data.page, data.pageSize);
+            return new Page(data.content,data.pageCount, data.page, data.pageSize, data.totalItem);
         }));
     }
 }

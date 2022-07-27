@@ -96,6 +96,7 @@ public class ProductServiceImpl implements IProductService {
         dto.setPageCount(all.getTotalPages());
         dto.setPage(all.getNumber());
         dto.setPageSize(all.getSize());
+        dto.setTotalItem(all.getTotalElements());
         return dto;
     }
 

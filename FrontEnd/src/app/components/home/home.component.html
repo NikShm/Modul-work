@@ -3,8 +3,8 @@
 <section class="home" id="home">
   <div class="search-container">
     <form action="">
-      <input type="text" autocomplete="off" placeholder="Search..." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
+      <input type="text" [(ngModel)]="searchText" autocomplete="off" placeholder="Search..." name="search">
+      <button (click)="search()" type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 
@@ -12,7 +12,7 @@
     <h3>estee lauder</h3>
     <span> Futurist Aqua Brilliance </span>
     <p>Makeup Teint aqua eclat SPF 20/PA+++</p>
-    <a routerLink="/products/8" class="btn">shop now</a>
+    <a routerLink="/products" class="btn">shop now</a>
   </div>
 
 </section>
