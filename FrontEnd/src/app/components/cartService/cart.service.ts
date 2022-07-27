@@ -6,7 +6,6 @@ import {Observable} from "rxjs";
 })
 export class CartService {
   products: Product[] = [];
-  sum: number = 0;
   done: boolean = false;
 
   addToCart(product: Product) {
@@ -35,15 +34,6 @@ export class CartService {
 
   clearCart() {
    this.products.splice(0, this.products.length);
-  }
-
-  totalSum(){
-    this.sum = 0;
-    for(let i = 0; i < this.products.length; i++){
-      this.sum += Number(this.products[i].price);
-      this.done = true;
-    }
-    return this.sum;
   }
   constructor() { }
 }

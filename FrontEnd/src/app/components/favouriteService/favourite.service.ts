@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../../models/product";
-import {Search} from "../../models/search";
 import {Observable} from "rxjs";
 import {Page} from "../../models/page";
 import {map} from "rxjs/operators";
@@ -38,14 +37,6 @@ export class FavouriteService {
 
   clearFavourite() {
     this.products.splice(0, this.products.length);
-  }
-
-  search(search:Search): Observable<Page> {
-    console.log(search)
-    return this.http.post('http://localhost:8080/api/favourite/search',search).pipe(map((data: any) => {
-      console.log(data)
-      return new Page(data.content,data.pageCount, data.page, data.pageSize);
-    }));
   }
   constructor(private http: HttpClient) { }
 }
