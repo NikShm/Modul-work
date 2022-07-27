@@ -6,7 +6,7 @@
   <div class="container">
     <div class="search-container-products">
       <form action="#" >
-        <input [(ngModel)]="search.name" type="text" autocomplete="off" placeholder="Search..." name="search">
+        <input [(ngModel)]="search.name" type="text" autocomplete="off" style="margin-bottom: 20px" placeholder="Search..." name="search">
         <button (click)="search.page = 0;getSearch()" type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>
@@ -63,51 +63,49 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
 
-        <h2 class="blog-sidebar-title"><b>Filter</b></h2>
+        <h2 class="blog-sidebar-title"><b>Price</b></h2>
         <hr style="width: 300px;">
-        <form class="dropdownS" action="#">
-          <select name="cars" id="cars">
-            <option value="" disabled selected hidden>Price</option>
-            <option value="saab">Name</option>
-            <option value="opel">Price</option>
-          </select>
-        </form>
-        <br>
-        <button type="button" class="btn btn-dark btn-lg" (click)="getSearch()">Apply</button>
-        <button type="button" class="btn btn-dark btn-lg" (click)="clear()">Clear</button>
+        <div style="margin-top: 5px;">
+          <input type="number" autocomplete="off"
+                 style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px" placeholder="0" name="search">
+          <input type="number" autocomplete="off" style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px"
+                 placeholder="0" name="search">
+        </div>
+        <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="getSearch()"><p style="margin-left: -10px">Apply</p></button>
+        <button type="button" style="width: 95px;" class="btn btn-dark btn-lg" (click)="clear()"><p style="margin-left: -8px">Clear</p></button>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
 
 
       </div>
     </div>
-    <div class="box-container">
+    <div class="box-container" style="margin-bottom: 20px;">
 
       <div class="box" *ngFor="let product of products | paginate: { itemsPerPage: search.pageSize, currentPage: search.page, totalItems: allProduct}">
-        <a routerLink="/products/{{product.id}}">
-        <span class="discount">-10%</span>
         <div class="image">
           <img src="{{product.photoPath}}" alt="">
           <div class="icons">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="cart-btn">add to cart</a>
-            <a href="#" class="fas fa-share"></a>
+            <a routerLink="/products" class="fas fa-heart" (click)="addToFavourite(product)"></a>
+            <a routerLink="/products" class="cart-btn" (click)="addToCart(product)">Add to cart</a>
+            <a routerLink="/products/{{product.id}}" class="fas fa-share" ></a>
           </div>
         </div>
         <div class="content">
           <h3>{{product.name}}</h3>
-          <div class="price"> {{product.price | currency:'USD'}} <span>$15.99</span> </div>
+          <div class="price"> {{product.price | currency:'USD'}}</div>
         </div>
-      </a>
       </div>
-      <div>
-      <button class="image" (click)="getFirst()">First Page</button>
-      <pagination-controls previousLabel="Previous"
-                           nextLabel="Next" (pageChange)="search.page = $event.valueOf() - 1; getSearch()">
-      </pagination-controls>
-      <button class="image" (click)="getLast()">Last Page</button>
       </div>
-
+    <div style="width: 600px; margin: auto; margin-bottom: 50px; margin-top: 270px">
+      <div style=" position: relative; margin: auto; font-size: 16px; margin-top: 20px">
+        <button style="width: 150px; font-size: 16px; position: absolute; margin-top: -5px" class="btn btn-dark btn-lg" (click)="getFirst()">First Page</button>
+        <div style="width: 280px; margin: auto; padding-left: 30px">
+          <pagination-controls previousLabel="Previous"
+                               nextLabel="Next" (pageChange)="search.page = $event.valueOf() - 1; getSearch()">
+          </pagination-controls>
+        </div>
+        <button style="width: 150px; font-size: 16px; position: absolute; margin-left: 500px; margin-top: -37px" class="btn btn-dark btn-lg" (click)="getLast()">Last Page</button>
+      </div>
 <!--      <div class="box">-->
 <!--        <span class="discount">-15%</span>-->
 <!--        <div class="image">-->

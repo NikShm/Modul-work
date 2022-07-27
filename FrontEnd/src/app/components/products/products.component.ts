@@ -4,6 +4,9 @@ import {ProductService} from "../../services/product.service";
 import {Search} from "../../models/search";
 import {Page} from "../../models/page";
 
+import {CartService} from "../cartService/cart.service";
+import {FavouriteService} from "../favouriteService/favourite.service";
+import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
@@ -68,7 +71,11 @@ export class ProductsComponent implements OnInit {
         this.getSearch()
     }
 
-    constructor(private productService: ProductService) {
+    constructor(
+        private productService: ProductService,
+        private route: ActivatedRoute,
+        private cartService: CartService,
+        private favouriteService: FavouriteService) {
     }
 
     getSearch() {
@@ -90,4 +97,13 @@ export class ProductsComponent implements OnInit {
         });
     }
 
+    addToCart(product: Product) {
+        this.cartService.addToCart(product);
+        window.alert('Your product has been added to the cart!');
+    }
+
+    addToFavourite(product: Product) {
+        this.favouriteService.addToFavourite(product);
+        window.alert('Your product has been added to the favourite!');
+    }
 }
