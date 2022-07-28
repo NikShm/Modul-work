@@ -1,11 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FavouriteService} from "../favouriteService/favourite.service";
-import { ActivatedRoute } from '@angular/router';
+import { FavouriteService } from 'src/app/services/favourite.service';
 import {Product} from "../../models/product";
-import {CartService} from "../cartService/cart.service";
-import {Page} from "../../models/page";
-import {HttpClient} from "@angular/common/http";
-import {Search} from "../../models/search";
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-favourite',
@@ -18,8 +14,6 @@ export class FavouriteComponent implements OnInit {
     pageFav = {page: 0, pageSize: 5, allProduct: 0, pageCount: 1}
 
   constructor(
-      private http: HttpClient,
-      private route: ActivatedRoute,
       private favouriteService: FavouriteService,
       private cartService: CartService,
   ) { }
@@ -39,6 +33,6 @@ export class FavouriteComponent implements OnInit {
   delFromFavourite(product: Product): void {
       const index: number = this.products.indexOf(product);
       this.favouriteService.delFromFavourite(index);
-      window.alert('Your product will be delete from the favourite!');
+      window.alert('Your product will be deleted from the favourites!');
   }
 }

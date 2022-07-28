@@ -1,5 +1,6 @@
 import { Input, Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-info',
@@ -9,7 +10,7 @@ import { Product } from 'src/app/models/product';
 export class ProductInfoComponent implements OnInit {
   @Input() product!: Product;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
   }
@@ -39,5 +40,11 @@ export class ProductInfoComponent implements OnInit {
 
   public enableEditMode() {
     this.onEdit.emit(true);
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    console.log(this.cartService.getItems());
+    window.alert('Your product has been added to the cart!');
   }
 }

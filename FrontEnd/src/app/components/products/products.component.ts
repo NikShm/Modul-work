@@ -4,9 +4,8 @@ import {ProductService} from "../../services/product.service";
 import {Search} from "../../models/search";
 import {Page} from "../../models/page";
 
-import {CartService} from "../cartService/cart.service";
-import {FavouriteService} from "../favouriteService/favourite.service";
-import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+import { FavouriteService } from 'src/app/services/favourite.service';
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
@@ -73,7 +72,6 @@ export class ProductsComponent implements OnInit {
 
     constructor(
         private productService: ProductService,
-        private route: ActivatedRoute,
         private cartService: CartService,
         private favouriteService: FavouriteService) {
     }
@@ -104,6 +102,6 @@ export class ProductsComponent implements OnInit {
 
     addToFavourite(product: Product) {
         this.favouriteService.addToFavourite(product);
-        window.alert('Your product has been added to the favourite!');
+        window.alert('Your product has been added to the favourites!');
     }
 }

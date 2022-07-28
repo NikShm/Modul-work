@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CartService} from "../cartService/cart.service";
+import { CartService } from 'src/app/services/cart.service';
 import {ActivatedRoute } from '@angular/router';
 import {Product} from "../../models/product";
 @Component({
@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
   delFromCart(product: Product): void {
     const index: number = this.products.indexOf(product);
     this.cartService.delFromCart(index);
-    window.alert('Your product will be delete from the cart!');
+    window.alert('Your product will be deleted from the cart!');
   }
 
   totalSum(){
