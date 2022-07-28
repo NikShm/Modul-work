@@ -1,0 +1,52 @@
+<section>
+    <h1>Edit Product</h1>
+    <form #editForm="ngForm" novalidate autocomplete="off" (ngSubmit)="onSave()">
+        <div class="flex">
+            <div id="photo-picker">
+                <label for="photo">Photo</label>
+                <input type="file" name="photo" id="photo" accept="image/png, image/jpeg" (change)="previewImage()">
+                <div id="preview">
+                    <img class="product-img" id="preview-img" [src]="product.photoPath" alt="preview">
+                </div>
+            </div>
+            <div class="other-content">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" maxlength="128" [(ngModel)]="product.name" #name="ngModel" required>
+                <div [hidden]="name.valid || name.untouched" class="error">Name is required</div>
+
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" min="1" max="10000" step="0.01" [(ngModel)]="product.price" #price="ngModel" required>
+                <div [hidden]="price.valid || price.untouched" class="error">Incorrect price</div>
+
+                <label for="color">Color</label>
+                <input type="color" name="color" id="color" [(ngModel)]="product.color" required>
+
+                <label for="volume">Volume</label>
+                <input type="text" name="volume" id="volume" minlength="2" maxlength="8" [(ngModel)]="product.volume" #volume="ngModel" required>
+                <div [hidden]="volume.valid || volume.untouched" class="error">Volume is required</div>
+
+                <label for="category">Category</label>
+                <select name="category" id="category" [(ngModel)]="product.category">
+                    <option value="PERFUMERY">Perfumery</option>
+                    <option value="MAKEUP">Makeup</option>
+                    <option value="HAIR">Hair</option>
+                    <option value="FACE">Face</option>
+                    <option value="BODY_AND_BATH">Body and bath</option>
+                    <option value="FOR_MEN">For men</option>
+                </select>
+
+                <label for="brand">Brand</label>
+                <select [compareWith]="compareFn" name="brand" id="brand" [(ngModel)]="product.brand">
+                    <option *ngFor="let brand of brands" [ngValue]="brand">{{brand.name}}</option>
+                </select>
+            </div>
+        </div>
+        <label for="description">Description</label>
+        <textarea name="description" id="description" maxlength="10000" [(ngModel)]="product.description"></textarea>
+
+        <div id="buttons">
+            <button type="button" class="btn" id="cancel" (click)="returnToInfo()">Cancel</button>
+            <button type="submit" class="btn" id="edit" [disabled]="editForm.invalid">Save</button>
+        </div>
+    </form>
+</section>

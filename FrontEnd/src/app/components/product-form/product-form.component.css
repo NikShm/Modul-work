@@ -1,0 +1,104 @@
+section {
+    padding-top: 15.2rem;
+}
+
+form {
+    padding: 2rem 2.5rem;
+    box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 10%);
+    border: 0.1rem solid rgba(0,0,0,.1);
+    border-radius: 0.5rem;
+}
+
+input, select, textarea {
+    margin-top: 0.4rem;
+    padding: 1rem;
+    border: 0.1rem solid rgba(0,0,0,.1);
+    border-radius: 0.5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 0.1rem solid #aa5377;
+}
+
+input[type=color] {
+    height: 4.6rem;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+input[type=file] {
+    padding: 0.72rem;
+}
+
+input.ng-touched.ng-invalid {
+    border: 0.2rem solid #dc3545;
+    margin-bottom: 0;
+    background: #fff1ee;
+}
+
+#buttons {
+    padding-top: 3rem;
+    text-align: end;
+}
+
+#edit {
+    background: #aa5377;
+}
+
+#edit:hover:enabled {
+    background: #8a3e55;
+}
+
+#edit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+#cancel {
+    background: #9c9c9c;
+    margin-right: 1.5rem;
+}
+
+#cancel:hover {
+    background: #848484;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    color: #aa5377;
+    padding: 0.5rem;
+    background: rgba(255,51,153,.05);
+    margin-bottom: 2rem;
+}
+
+#preview {
+    height: 39rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+.error {
+    color: #dc3545;
+    margin-bottom: 0.3rem;
+    text-align: end;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 0.3rem;
+}
+
+@media screen and (max-width: 991px) {
+    section {
+        padding: 15.2rem 2rem 2rem 2rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #photo-picker {
+        margin-bottom: 1.5rem;
+    }
+}

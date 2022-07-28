@@ -15,8 +15,7 @@ public class ProductDTO {
     private Integer id;
     private String name;
     private String description;
-    private String brandName;
-    private Integer brandId;
+    private BrandDTO brand;
     private BigDecimal price;
     private CategoryType category;
     private String color;
@@ -26,12 +25,11 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-    public ProductDTO(Integer id, String name, String description, String brandName, Integer brandId, BigDecimal price, CategoryType category, String color, String volume, String photoPath) {
+    public ProductDTO(Integer id, String name, String description, BrandDTO brand, BigDecimal price, CategoryType category, String color, String volume, String photoPath) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.brandName = brandName;
-        this.brandId = brandId;
+        this.brand = brand;
         this.price = price;
         this.category = category;
         this.color = color;
@@ -61,14 +59,6 @@ public class ProductDTO {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 
     public BigDecimal getPrice() {
@@ -111,12 +101,12 @@ public class ProductDTO {
         this.photoPath = photoPath;
     }
 
-    public Integer getBrandId() {
-        return brandId;
+    public BrandDTO getBrand() {
+        return brand;
     }
 
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
+    public void setBrand(BrandDTO brand) {
+        this.brand = brand;
     }
 
     @Override
@@ -125,9 +115,9 @@ public class ProductDTO {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", brand='" + brandName + '\'' +
+                ", brand=" + brand +
                 ", price=" + price +
-                ", category='" + category + '\'' +
+                ", category=" + category +
                 ", color='" + color + '\'' +
                 ", volume='" + volume + '\'' +
                 ", photoPath='" + photoPath + '\'' +
