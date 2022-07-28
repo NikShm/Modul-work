@@ -1,1 +1,41 @@
-<p>favourite works!</p>
+<app-header></app-header>
+<body>
+<div class="shopping-cart" >
+    <!-- Title -->
+    <div class="title">
+        💗Favourite💗
+    </div>
+
+    <!-- Product #1 -->
+    <div class="item" *ngFor="let product of products | paginate: { itemsPerPage: pageFav.pageSize, currentPage: pageFav.page, totalItems: pageFav.allProduct}">
+        <div class="buttons">
+            <button style="background-color: #fff; border-radius: 50%; width: 30px; height: 30px; cursor: pointer" type="button" (click)="delFromFavourite(product)"><img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIKdmlld0JveD0iMCAwIDE3MiAxNzIiCnN0eWxlPSIgZmlsbDojMDAwMDAwOyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PHBhdGggZD0iTTAsMTcydi0xNzJoMTcydjE3MnoiIGZpbGw9Im5vbmUiPjwvcGF0aD48ZyBmaWxsPSIjYWY1M2E0Ij48cGF0aCBkPSJNODAuNjI1LDEwLjc1Yy0zOC41NDg4MiwwIC02OS44NzUsMzEuMzI2MTggLTY5Ljg3NSw2OS44NzVjMCwzOC41NDg4MyAzMS4zMjYxOCw2OS44NzUgNjkuODc1LDY5Ljg3NWMzOC41NDg4MywwIDY5Ljg3NSwtMzEuMzI2MTcgNjkuODc1LC02OS44NzVjMCwtMzguNTQ4ODIgLTMxLjMyNjE3LC02OS44NzUgLTY5Ljg3NSwtNjkuODc1ek0xMDkuNzI1NTgsMTAyLjEyNWwtNy42MDA1OCw3LjYwMDU4bC0yMS41LC0yMS41bC0yMS41LDIxLjVsLTcuNjAwNTgsLTcuNjAwNThsMjEuNSwtMjEuNWwtMjEuNSwtMjEuNWw3LjYwMDU4LC03LjYwMDU4bDIxLjUsMjEuNWwyMS41LC0yMS41bDcuNjAwNTgsNy42MDA1OGwtMjEuNSwyMS41eiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+" width="30px"/></button>
+        </div>
+        <div class="image">
+            <a routerLink="/products/{{product.id}}"><img src="{{product.photoPath}}" height="100px" alt="" /></a>
+        </div>
+
+        <div class="description">
+            <a routerLink="/products/{{product.id}}"><span>{{ product.name }}</span>
+                <span>{{ product.brandName }}</span>
+                <span>{{ product.volume }}</span></a>
+        </div>
+
+        <div class="quantity">
+            <p style="font-size: 16px; color: #43484D; font-weight: 300;">{{product.price | currency:'USD'}}</p>
+        </div>
+
+        <div class="total-price"><button class="order3" type="button" (click)="(addToCart(product))"><p style="font-size: 14px; font-family: 'Roboto', sans-serif;">Add to cart</p></button></div>
+    </div>
+    <pagination-controls previousLabel="Previous"
+                         nextLabel="Next" (pageChange)="pageFav.page = $event.valueOf();">
+    </pagination-controls>
+    <div class="item2">
+        <h3 class="total"></h3>
+        <div class="total-price2"></div>
+
+        <button class="order"  type="button" (click)="clearFavourite()"><h3 style="font-family: 'Roboto', sans-serif;">Clear all</h3></button>
+    </div>
+</div>
+</body>
+<app-footer></app-footer>

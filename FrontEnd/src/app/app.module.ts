@@ -22,6 +22,7 @@ import {ProductService} from "./services/product.service";
 
 import { FormatPipe } from './pipes/format.pipe';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,11 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule.forRoot([
+      { path: 'cart', component: CartComponent },
+      { path: 'favourite', component: FavouriteComponent }
+    ])
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

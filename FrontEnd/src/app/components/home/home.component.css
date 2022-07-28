@@ -15,6 +15,16 @@ section {
   background:rgba(255, 51, 153,.05);
 }
 
+.AddTo{
+  width: 180px;
+  height: 55px;
+  background-color: #aa5377;
+  cursor: pointer;
+}
+.AddTo:hover{
+  background-color: #333;
+}
+
 .btn {
   display: inline-block;
   margin-top: 1rem;
