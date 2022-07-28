@@ -1,46 +1,6 @@
 <app-header></app-header>
 
-<section>
-    <div class="flex">
-        <div id="img">
-            <img src="{{product.photoPath}}" class="product-img">
-        </div>
-        <div id="details">
-            <div class="title">
-                <h1>{{product.name}}</h1>
-                
-                <div class="dropdown-actions">
-                    <button id="actions" class="btn-dropdown-not-active" (click)="showActions()">
-                        <i id="icon-actions" class="fas fa-ellipsis-v"></i>
-                    </button>
-                    <div class="dropdown-content" id="dropdown-content-actions">
-                        <button class="btn-action">Edit</button>
-                        <button class="btn-action">Delete</button>
-                    </div>
-                </div>
-            </div>
-            
-            <p id="price">{{product.price | currency:'USD'}}</p>
-            <div id="color">
-                <p><strong>Color:</strong></p>
-                <span id="color-circle" [ngStyle]="{'background': product.color, 'border': '0.13rem solid ' + product.color}"></span>
-            </div>
-            <p class="marb-1">
-                <strong>Volume:</strong> {{product.volume}}
-            </p>
-            <p class="marb-1">
-                <strong>Category:</strong> 
-                {{product.category | format}}
-            </p>
-            <p class="marb-1">
-                <strong>Brand:</strong> {{product.brandName}}
-            </p>
-            <p class="desc">
-                {{product.description}}
-            </p>
-            <button class="btn">Add to Shopping Cart</button>
-        </div>
-    </div>
-</section>
+<app-product-info [product]="product" (onEdit)="showEditForm($event)" *ngIf="!editMode"></app-product-info>
+<app-product-form [product]="editedProduct" (onInfo)="changeEditMode($event)" *ngIf="editMode"></app-product-form>
 
 <app-footer></app-footer>

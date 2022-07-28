@@ -33,10 +33,6 @@ CREATE TABLE person
 (
     id SERIAL PRIMARY KEY,
     role userRole NOT NULL,
-    firstName VARCHAR(128) NOT NULL,
-    lastName VARCHAR(128) NOT NULL,
-    phone VARCHAR(16),
-    email VARCHAR(128),
     login VARCHAR(128) NOT NULL,
     password VARCHAR(32) NOT NULL,
     createdAt timestamp default now()

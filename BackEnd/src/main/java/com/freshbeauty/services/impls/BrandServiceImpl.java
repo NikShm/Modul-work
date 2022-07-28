@@ -1,8 +1,9 @@
-package com.freshbeauty.services.impl;
+package com.freshbeauty.services.impls;
 
 import com.freshbeauty.dto.BrandDTO;
+import com.freshbeauty.entities.Brand;
 import com.freshbeauty.mappers.BrandMapper;
-import com.freshbeauty.services.IBrandService;
+import com.freshbeauty.services.interfaces.IBrandService;
 import com.freshbeauty.repositories.BrandRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +28,20 @@ public class BrandServiceImpl implements IBrandService {
     }
 
     @Override
-    public List<BrandDTO> getAll() {
-        return repository.findAll().stream().map(mapper::toDto).collect(Collectors.toList());
+    public List<Brand> getAll() {
+        return repository.findAll();
     }
 
     @Override
-    public BrandDTO getOne(Integer id) {
-        return mapper.toDto(repository.findById(id).orElse(null));
+    public Brand getOne(Integer id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public BrandDTO getDTO(Brand entity) {
+        return mapper.toDto(entity);
+    }
+
+    public List<BrandDTO> getDTOs(List<Brand> entities) {
+        return entities.stream().map(mapper::toDto).collect(Collectors.toList());
     }
 }

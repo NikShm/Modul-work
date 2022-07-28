@@ -1,4 +1,4 @@
-package com.freshbeauty.services;
+package com.freshbeauty.services.interfaces;
 /*
 @author Микола
 @project FreshBeauty
@@ -13,6 +13,6 @@ import com.freshbeauty.entities.Brand;
 import java.util.List;
 
 public interface IBrandService {
-    List<BrandDTO> getAll();
-    BrandDTO getOne(Integer id);
+    List<Brand> getAll();
+    Brand getOne(Integer id);
 }

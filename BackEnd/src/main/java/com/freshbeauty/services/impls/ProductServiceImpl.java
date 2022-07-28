@@ -1,14 +1,15 @@
-package com.freshbeauty.services.impl;
+package com.freshbeauty.services.impls;
 
 import com.freshbeauty.dto.PageDTO;
 import com.freshbeauty.dto.ProductDTO;
 import com.freshbeauty.dto.SearchDTO;
-import com.freshbeauty.dto.SortDirection;
+import com.freshbeauty.entities.Brand;
+import com.freshbeauty.enums.SortDirection;
 import com.freshbeauty.entities.Product;
-import com.freshbeauty.enums.CategoryType;
 import com.freshbeauty.mappers.ProductMapper;
+import com.freshbeauty.repositories.BrandRepository;
 import com.freshbeauty.repositories.ProductRepository;
-import com.freshbeauty.services.IProductService;
+import com.freshbeauty.services.interfaces.IProductService;
 import com.freshbeauty.utils.QueryHelper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,9 +20,9 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -34,10 +35,15 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements IProductService {
     private final ProductRepository repository;
+    private final BrandServiceImpl brandService;
+    private final FilesStorageServiceImpl filesService;
     private final ProductMapper mapper;
 
-    public ProductServiceImpl(ProductRepository repository, ProductMapper mapper) {
+    public ProductServiceImpl(ProductRepository repository, BrandServiceImpl brandService,
+                              FilesStorageServiceImpl filesService, ProductMapper mapper) {
         this.repository = repository;
+        this.brandService = brandService;
+        this.filesService = filesService;
         this.mapper = mapper;
     }
 
@@ -49,6 +55,20 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public ProductDTO getOne(Integer id) {
         return repository.findById(id).map(mapper::toDto).orElse(null);
+    }
+
+    @Override
+    public void update(ProductDTO dto) throws IOException {
+        Product productToUpdate = repository.findById(dto.getId()).orElse(null);
+        if (dto.getBrand().getId() != productToUpdate.getBrand().getId()) {
+            Brand brandToUpdate = brandService.getOne(dto.getBrand().getId());
+            productToUpdate.setBrand(brandToUpdate);
+        }
+        if (!filesService.exists(dto.getPhotoPath()) && dto.getCategory() != productToUpdate.getCategory()) {
+            this.filesService.move(productToUpdate.getPhotoPath(), dto.getPhotoPath());
+        }
+        Product updatedProduct = mapper.toEntity(productToUpdate, dto);
+        repository.save(updatedProduct);
     }
 
     @Override

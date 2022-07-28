@@ -1,4 +1,4 @@
-package com.freshbeauty.dto;/*
+package com.freshbeauty.enums;/*
 @author Микола
 @project FreshBeauty
 @class SortDirection

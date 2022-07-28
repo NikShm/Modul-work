@@ -1,7 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -10,39 +9,28 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  public product!: Product;
+  product!: Product;
+  editedProduct!: Product;
+  editMode: boolean = false;
 
-
-  constructor(private route: ActivatedRoute, private productService: ProductService,
-    private location: Location) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getProduct();
   }
 
   private getProduct(): void {
-    const id = this.route.snapshot.paramMap.get('id') ?? '';
-    this.productService.getOneProduct(id).subscribe(product => this.product = product);
+    const id: string = this.route.snapshot.paramMap.get('id') ?? '';
+    this.productService.getOneProduct(id).subscribe(data => this.product = new Product(data));
   }
 
-  public showActions() {
-    document.getElementById("dropdown-content-actions")?.classList.toggle("show");
-    document.getElementById("actions")?.classList.remove("btn-dropdown-not-active");
-    document.getElementById("actions")?.classList.toggle("btn-dropdown-active");
+  changeEditMode(value: boolean) {
+    this.getProduct();
+    this.editMode = value;
   }
 
-  @HostListener('window:click', ['$event'])
-  onClick(event: MouseEvent) {
-    if (!(<HTMLElement>event.target).matches('#actions')) {
-      const dropdown = document.getElementById("dropdown-content-actions");
-      const button = document.getElementById("actions");
-      if (dropdown?.classList.contains('show')) {
-        dropdown.classList.remove('show');
-      }
-      if (button?.classList.contains('btn-dropdown-active')) {
-        button.classList.remove('btn-dropdown-active');
-        button.classList.toggle('btn-dropdown-not-active');
-      }
-    }
+  showEditForm(value: boolean) {
+    this.editedProduct = new Product(this.product);
+    this.changeEditMode(value);
   }
 }

@@ -16,10 +16,12 @@ import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { ProductComponent } from './components/product/product.component';
 import { AboutIconsComponent } from './shared/layout/about-icons/about-icons.component';
+import { ProductInfoComponent } from './components/product-info/product-info.component';
 
 import {ProductService} from "./services/product.service";
 
 import { FormatPipe } from './pipes/format.pipe';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FormatPipe } from './pipes/format.pipe';
     FooterComponent,
     ProductComponent,
     AboutIconsComponent,
-    FormatPipe
+    FormatPipe,
+    ProductInfoComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
