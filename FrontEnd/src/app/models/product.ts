@@ -8,7 +8,7 @@ export class Product {
         this.price = product.price;
         this.color = product.color;
         this.brand = product.brand;
-        this.photoPath = product.photoPath;
+        this.photoPath = product.photoPath + '?' + new Date().getTime();
         this.volume = product.volume;
         this.category = product.category;
     }

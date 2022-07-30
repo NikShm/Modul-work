@@ -17,7 +17,7 @@ import java.util.List;
 public interface IProductService {
     List<ProductDTO> getAll();
     ProductDTO getOne(Integer id);
-    void delete(Integer id);
+    void delete(Integer id) throws IOException;
     List<ProductDTO> getLastProducts(int quantity);
     PageDTO<ProductDTO> getPage(SearchDTO search);
     void update(ProductDTO dto) throws IOException;

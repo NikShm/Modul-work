@@ -20,32 +20,32 @@ export class ProductService {
         return this.http.get<Product>('http://localhost:8080/api/products/' + id);
     }
 
-    updateProduct(productToUpdate: Product, newImage: File) {
+    async updateProduct(productToUpdate: Product, newImage: File) {
         let productData: Product | FormData;
         const category = productToUpdate.category.replace(/_/g, "-").toLowerCase();
-        const imgPath = newImage ? newImage.name : productToUpdate.photoPath;
+        let imgPath = newImage ? newImage.name : productToUpdate.photoPath;
         const matches = imgPath.match(/.[a-zA-Z]+/g);
         const extension = matches![matches!.length-1];
         const newPath = `assets/images/${category}/${category}${productToUpdate.id}${extension}`;
         
         if (newImage) {
+            let oldPath = productToUpdate.photoPath;
+            oldPath = oldPath.substring(0, oldPath.indexOf('?'));
+
             productData = new FormData();
             productData.append('photo', newImage);
             productData.append('newPath', newPath);
-            productData.append('oldPath', productToUpdate.photoPath);
+            productData.append('oldPath', oldPath);
         
-            this.http.post('http://localhost:8080/api/products/uploadPhoto/', productData).toPromise()
-            .then(res => {
-                productToUpdate.photoPath = newPath;
-                productData = new Product(productToUpdate);
-                this.http.put('http://localhost:8080/api/products/update/', productData).subscribe();
-            });
+            await this.http.post('http://localhost:8080/api/products/uploadPhoto/', productData).toPromise();
         }
-        else {
-            productToUpdate.photoPath = newPath;
-            productData = new Product(productToUpdate);
-            this.http.put('http://localhost:8080/api/products/update/', productData).subscribe();
-        }
+        productData = new Product(productToUpdate);
+        productData.photoPath = newPath;
+        await this.http.put('http://localhost:8080/api/products/update/', productData).toPromise();
+    }
+
+    deleteProduct(id: string) {
+        return this.http.delete<Product>('http://localhost:8080/api/products/'+id);
     }
 
     getLastProduct(): Observable<Product[]> {

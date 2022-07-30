@@ -73,7 +73,9 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws IOException {
+        Product productToDelete = repository.findById(id).orElse(null);
+        this.filesService.delete(productToDelete.getPhotoPath());
         repository.deleteById(id);
     }
 
