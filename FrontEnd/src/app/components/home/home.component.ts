@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
+import {Router} from "@angular/router";
 import {CartService} from "../../services/cart.service";
 
 @Component({
@@ -11,7 +12,15 @@ import {CartService} from "../../services/cart.service";
 export class HomeComponent implements OnInit {
   products: Product[] = [];
 
+  searchText = "";
+
+  search() {
+    this.productService.searchHomePage(this.searchText)
+    this.router.navigate(["/","products"])
+  }
+
   constructor(private productService: ProductService,
+              private router: Router,
               private cartService: CartService) {
   }
 

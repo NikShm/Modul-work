@@ -1,5 +1,5 @@
 export class Search {
-    constructor(name: any, brand: string, priceFrom: number, priceTo: number, sortField: string, sortDirection: string, page: number, pageSize: number, categoryType: any) {
+    constructor(name: any, brand: string, priceFrom: number, priceTo: number, sortField: string, sortDirection: string, page: number, pageSize: number, categoryType: null) {
         this.name = name;
         this.brand = brand;
         this.priceFrom = priceFrom;
@@ -19,5 +19,5 @@ export class Search {
     sortDirection : string;
     page : number;
     pageSize : number;
-    categoryType:string;
+    categoryType:null;
 }

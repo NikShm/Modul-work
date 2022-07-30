@@ -14,6 +14,15 @@ public class PageDTO<T> {
     int pageCount;
     int page;
     int pageSize;
+    long totalItem;
+
+    public long getTotalItem() {
+        return totalItem;
+    }
+
+    public void setTotalItem(long totalItem) {
+        this.totalItem = totalItem;
+    }
 
     public int getPageSize() {
         return pageSize;

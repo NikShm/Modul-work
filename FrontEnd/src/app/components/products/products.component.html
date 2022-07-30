@@ -5,9 +5,11 @@
   <br><br>
   <div class="container">
     <div class="search-container-products">
-      <form action="#" >
-        <input [(ngModel)]="search.name" type="text" autocomplete="off" style="margin-bottom: 20px" placeholder="Search..." name="search">
-        <button (click)="search.page = 0;getSearch()" type="submit"><i class="fa fa-search"></i></button>
+      <form action="#">
+        <input [(ngModel)]="searchParameter.name" type="text" autocomplete="off"
+               placeholder="Search..." name="search">
+        <button (click)="changePage(0)" type="submit"><i
+                class="fa fa-search"></i></button>
       </form>
     </div>
     <div class="side-menu">
@@ -15,7 +17,7 @@
         <h2 class="blog-sidebar-title"><b>Categories</b></h2>
         <hr style="width: 300px;">
         <form class="dropdownS" action="#">
-          <select name="cars" [(ngModel)]="search.brand">
+          <select name="cars" [(ngModel)]="searchParameter.brand">
             <option value="" disabled selected hidden>Brand</option>
             <option value="Maybelline New York">Maybelline New York</option>
             <option value="Loreal Paris">Loreal Paris</option>
@@ -25,7 +27,7 @@
           </select>
         </form>
         <form class="dropdownS" action="#">
-          <select name="cars" [(ngModel)]="search.categoryType">
+          <select name="cars" (change)="setCategory($event)">
             <option value="null">Categories</option>
             <option value="PERFUMERY">Perfumery</option>
             <option value="MAKEUP">Makeup</option>
@@ -44,7 +46,6 @@
             <option value="PriceDown" >Price <</option>
           </select>
         </form>
-
         <div>&nbsp;</div>
         <div>&nbsp;</div>
 
@@ -56,7 +57,7 @@
           <input type="number" autocomplete="off" style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px"
                  placeholder="0" name="search">
         </div>
-        <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="getSearch()"><p style="margin-left: -10px">Apply</p></button>
+        <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="changePage(0)"><p style="margin-left: -10px">Apply</p></button>
         <button type="button" style="width: 95px;" class="btn btn-dark btn-lg" (click)="clear()"><p style="margin-left: -8px">Clear</p></button>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -64,7 +65,7 @@
     </div>
     <div class="box-container" style="margin-bottom: 20px;">
 
-      <div class="box" *ngFor="let product of products | paginate: { itemsPerPage: search.pageSize, currentPage: search.page, totalItems: allProduct}">
+      <div class="box" *ngFor="let product of products | paginate: { itemsPerPage: searchParameter.pageSize, currentPage: searchParameter.page + 1, totalItems: allProduct}">
         <div class="image">
           <img src="{{product.photoPath}}" alt="">
           <div class="icons">
@@ -84,7 +85,7 @@
         <button style="width: 150px; font-size: 16px; position: absolute; margin-top: -5px" class="btn btn-dark btn-lg" (click)="getFirst()">First Page</button>
         <div style="width: 280px; margin: auto; padding-left: 30px">
           <pagination-controls previousLabel="Previous"
-                               nextLabel="Next" (pageChange)="search.page = $event.valueOf() - 1; getSearch()">
+                               nextLabel="Next" (pageChange)="changePage($event.valueOf() - 1)">
           </pagination-controls>
         </div>
         <button style="width: 150px; font-size: 16px; position: absolute; margin-left: 500px; margin-top: -37px" class="btn btn-dark btn-lg" (click)="getLast()">Last Page</button>
