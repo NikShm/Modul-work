@@ -1,9 +1,9 @@
 package com.freshbeauty.dto;
 
 import com.freshbeauty.enums.CategoryType;
+import com.freshbeauty.enums.SortDirection;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 
 /*
 @author Микола

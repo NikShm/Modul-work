@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Product} from "../../models/product";
-import {Observable} from "rxjs";
-import {Page} from "../../models/page";
-import {map} from "rxjs/operators";
-import {HttpClient} from "@angular/common/http";
+import {Product} from "../models/product";
 @Injectable({
   providedIn: 'root'
 })
@@ -38,5 +34,5 @@ export class FavouriteService {
   clearFavourite() {
     this.products.splice(0, this.products.length);
   }
-  constructor(private http: HttpClient) { }
+  constructor() { }
 }

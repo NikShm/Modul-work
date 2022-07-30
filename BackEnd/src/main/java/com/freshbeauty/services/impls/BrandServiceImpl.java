@@ -1,4 +1,4 @@
-package com.freshbeauty.services.impl;
+package com.freshbeauty.services.impls;
 
 import com.freshbeauty.dto.BrandDTO;
 import com.freshbeauty.mappers.BrandMapper;
