@@ -12,6 +12,37 @@ header {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
 }
 
+.dropdown-nav {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-nav:hover>a {
+    color: #6f2f4a;
+}
+
+.dropdown-nav:hover .dropdown-content-nav {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 20rem;
+    z-index: 1;
+}
+
+.dropdown-content-nav {
+    border-radius: 3rem;
+    background-color: #f1f1f1;
+    box-shadow: 0 0.8rem 1.6rem 0 rgba(0, 0, 0, 0.25);
+}
+
+.dropdown-content-nav a {
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
 #toggler {
     display: none;
 }

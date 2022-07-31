@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (saveCategory)="setCategoryWithHeader($event)"></app-header>
 
 <section class="products" id="products">
   <div class="aboutHeading">
@@ -18,7 +18,7 @@
     </div>
     <div class="side-menu" style="margin-top: -400px">
       <div class="col-lg-3 blog-form">
-        <h2 class="blog-sidebar-title"><b>Categories</b></h2>
+        <h2 class="blog-sidebar-title"><b>Filters</b></h2>
         <hr style="width: 300px;">
         <form class="dropdownS" action="#">
           <select name="cars" [(ngModel)]="searchParameter.brand">
@@ -27,7 +27,7 @@
           </select>
         </form>
         <form class="dropdownS" action="#">
-          <select name="cars" (change)="setCategory($event)">
+          <select name="cars" [value]="getCategory()" (change)="setCategory($event)">
             <option value="null">Categories</option>
             <option value="PERFUMERY">Perfumery</option>
             <option value="MAKEUP">Makeup</option>
@@ -40,10 +40,10 @@
         <form class="dropdownS" action="#">
           <select name="cars" [(ngModel)]="sortValue" (change)="setSorted()">
             <option value="" >Sort by</option>
-            <option value="NameUp">Name A>Z</option>
-            <option value="NameDown">Name A>Z</option>
-            <option value="PriceUp">Price ></option>
-            <option value="PriceDown" >Price <</option>
+            <option value="NameUp">Name A to Z</option>
+            <option value="NameDown">Name Z to A</option>
+            <option value="PriceUp">From cheap to expensive</option>
+            <option value="PriceDown" >From expensive to cheap</option>
           </select>
         </form>
         <div>&nbsp;</div>
@@ -52,10 +52,10 @@
         <h2 class="blog-sidebar-title"><b>Price</b></h2>
         <hr style="width: 300px;">
         <div style="margin-top: 5px;">
-          <input type="number" autocomplete="off"
+          <input type="number" [(ngModel)]="searchParameter.priceFrom" autocomplete="off"
                  style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px" placeholder="0" name="search">
-          <input type="number" autocomplete="off" style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px"
-                 placeholder="0" name="search">
+          <input type="number" [(ngModel)]="searchParameter.priceTo" autocomplete="off" style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px"
+                 placeholder="0" name="search" [min]="0" [max]="99999" [step]="1">
         </div>
         <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="changePage(0)"><p style="margin-left: -10px">Apply</p></button>
         <button type="button" style="width: 95px;" class="btn btn-dark btn-lg" (click)="clear()"><p style="margin-left: -8px">Clear</p></button>
@@ -85,7 +85,7 @@
       <div style=" position: relative; margin: auto; font-size: 16px; margin-top: 20px">
         <div style="width: 600px; text-align: center; background-color: #fff; margin: auto;">
           <pagination-controls previousLabel="Previous"
-                               nextLabel="Next" (pageChange)="changePage($event.valueOf() - 1)">
+                               nextLabel="Next" (pageChange)="changePage($event.valueOf() - 1); onActivate($event)">
           </pagination-controls>
         </div>
       </div>

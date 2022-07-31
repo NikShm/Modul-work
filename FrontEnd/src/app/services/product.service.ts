@@ -86,13 +86,6 @@ export class ProductService {
         }));
     }
 
-    getAllProduct(): Observable<Product[]> {
-        return this.http.get('http://localhost:8080/api/products/').pipe(map((data: any) => {
-            return data.map(function (product: any): Product {
-                return new Product(product);
-            });
-        }));
-    }
     getAllSortedProductAndSearch(sortType:string, field:string, search:string): Observable<Product[]> {
         return this.http.get('http://localhost:8080/api/products/sort='+sortType+"/field="+field+"/search="+search).pipe(map((data: any) => {
             return data.map(function (product: any): Product {
@@ -110,6 +103,9 @@ export class ProductService {
 
     searchHomePage(text:string){
         this.searchParameter.name = text;
+    }
+    searchHeader(text:any){
+        this.searchParameter.categoryType = text;
     }
 
     search(): Observable<Page> {

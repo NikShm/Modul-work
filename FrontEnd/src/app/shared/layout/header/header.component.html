@@ -14,10 +14,20 @@
     </div>
 
     <nav class="navbar">
-        <a routerLink="/" fragment="home">Home</a>
-        <a routerLink="/about">About</a>
-        <a routerLink="/products">Products</a>
-        <a routerLink="/" fragment="contact">Contact</a>
+       <a routerLink="/" fragment="home">Home</a>
+        <a (click)="toAbout()">About</a>
+        <div class="dropdown-nav">
+            <a routerLink="/products" fragment="products">Products ▼</a>
+            <div class="dropdown-content dropdown-content-nav">
+                <a name="PERFUMERY" (click)="search($event)">Perfumery</a>
+                <a name="MAKEUP" (click)="search($event)">Makeup</a>
+                <a name="HAIR" (click)="search($event)">Hair</a>
+                <a name="FACE" (click)="search($event)">Face</a>
+                <a name="BODY_AND_BATH" (click)="search($event)">Body and bath</a>
+                <a name="FOR_MEN" (click)="search($event)">For men</a>
+            </div>
+        </div>
+        <a (click)="toContact()">Contact</a>
     </nav>
 
     <div class="icons">

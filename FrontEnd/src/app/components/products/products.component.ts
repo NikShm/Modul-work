@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {Page} from "../../models/page";
-
+import {HeaderComponent} from "../../shared/layout/header/header.component";
 import {CartService} from "../../services/cart.service";
 import {FavouriteService} from "../../services/favourite.service";
 import { Router } from '@angular/router';
@@ -40,6 +40,7 @@ export class ProductsComponent implements OnInit {
     }
 
     setCategory(event: any) {
+        console.log(event.target.value)
         if (event.target.value == "null") {
             this.searchParameter.categoryType = null
         } else {
@@ -47,7 +48,24 @@ export class ProductsComponent implements OnInit {
         }
     }
 
+    setCategoryWithHeader(event: any) {
+        console.log(event.target.name)
+        this.searchParameter.categoryType = event.target.name
+
+    }
+
+    getCategory(){
+        return this.searchParameter.categoryType;
+    }
+
+    onActivate(event:any) {
+        window.scroll(0,0);
+        //or document.body.scrollTop = 0;
+        //or document.querySelector('body').scrollTo(0,0)
+    }
+
     changePage(page: number) {
+        window.scroll(0,0);
         this.searchParameter.page = page;
         this.productService.setSearchParameter(this.searchParameter)
         this.search();
@@ -83,12 +101,14 @@ export class ProductsComponent implements OnInit {
     }
 
     getFirst() {
+        window.scroll(0,0);
         this.searchParameter.page = 0;
         this.productService.setSearchParameter(this.searchParameter)
         this.search()
     }
 
     getLast() {
+        window.scroll(0,0);
         if (this.pageCount != 0) {
             this.searchParameter.page = this.pageCount - 1;
         }
