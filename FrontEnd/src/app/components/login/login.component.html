@@ -3,15 +3,15 @@
     <h1>Log In</h1>
     <form>
       <div class="inputbox">
-        <input type="text" required="required">
+        <input name="login" type="text" [(ngModel)]="login" required="required">
         <span>Login</span>
       </div>
       <div class="inputbox">
-        <input type="password" required="required">
+        <input name="password" type="password" [(ngModel)]="password" required="required">
         <span>Password</span>
       </div>
       <div class="inputbox">
-        <input type="button" value="Submit">
+        <input type="button" (click)="submit()" value="Submit">
       </div>
     </form>
   </div>

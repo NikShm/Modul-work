@@ -10,11 +10,11 @@ VALUES
     ('Versace'),
     ('Dior');
 
-INSERT INTO person (role, login, password)
+INSERT INTO person (role, login, password,firstname,lastname)
 VALUES
-    ('ADMIN', 'admin-yuliana', 'yuliana-admin'),
-    ('ADMIN', 'admin-emiliia', 'emiliia-admin'),
-    ('ADMIN', 'admin-mykola', 'mykola-admin');
+    ('ADMIN', 'admin-yuliana', 'yuliana-admin', 'Yuliana', 'Bilack'),
+    ('ADMIN', 'admin-emiliia', 'emilia-admin', 'Emilia', 'Dragomirecha'),
+    ('ADMIN', 'admin-mykola', 'mykola-admin', 'Mykola', 'Shumeyko');
 
 INSERT INTO product (name, description, brandId, price, category, color, volume, photoPath)
 VALUES

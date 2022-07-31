@@ -34,6 +34,7 @@ export class ProductsComponent implements OnInit {
     }
 
     setCategory(event: any) {
+        console.log(event.target.value)
         if (event.target.value == "null") {
             this.searchParameter.categoryType = null
         } else {
@@ -57,6 +58,7 @@ export class ProductsComponent implements OnInit {
     }
 
     changePage(page: number) {
+        window.scroll(0,0);
         this.searchParameter.page = page;
         this.search();
     }
@@ -90,6 +92,7 @@ export class ProductsComponent implements OnInit {
     }
 
     getFirst() {
+        window.scroll(0,0);
         this.searchParameter.page = 0;
         this.search()
     }

@@ -104,6 +104,9 @@ export class ProductService {
     searchHeader(text:any){
         this.categoryType = text;
     }
+    searchHeader(text:any){
+        this.searchParameter.categoryType = text;
+    }
 
     search(search:Search): Observable<Page> {
         if(search.priceTo <= 0){

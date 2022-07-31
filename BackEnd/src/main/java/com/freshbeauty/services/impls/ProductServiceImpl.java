@@ -3,11 +3,9 @@ package com.freshbeauty.services.impls;
 import com.freshbeauty.dto.PageDTO;
 import com.freshbeauty.dto.ProductDTO;
 import com.freshbeauty.dto.SearchDTO;
-import com.freshbeauty.entities.Brand;
 import com.freshbeauty.enums.SortDirection;
 import com.freshbeauty.entities.Product;
 import com.freshbeauty.mappers.ProductMapper;
-import com.freshbeauty.repositories.BrandRepository;
 import com.freshbeauty.repositories.ProductRepository;
 import com.freshbeauty.services.IProductService;
 import com.freshbeauty.utils.QueryHelper;
@@ -25,7 +23,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
