@@ -41,10 +41,10 @@ export class ProductFormComponent implements OnInit {
   }
 
   onSave() {
-    this.productService.updateProduct(this.product, this.image);
-    window.alert(`Product №${this.product.id} was updated successfully.`);
-    //location.reload();
-    this.returnToInfo();
+    this.productService.updateProduct(this.product, this.image).then(() => {
+      window.alert(`Product №${this.product.id} was updated successfully.`);
+      this.returnToInfo();
+    });
   }
 
   compareFn(b1: Brand, b2: Brand) {

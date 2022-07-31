@@ -56,7 +56,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteOne(@PathVariable Integer id) {
+    public void deleteOne(@PathVariable Integer id) throws IOException {
         service.delete(id);
     }
 

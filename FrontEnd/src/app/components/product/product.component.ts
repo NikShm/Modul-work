@@ -31,6 +31,6 @@ export class ProductComponent implements OnInit {
 
   showEditForm(value: boolean) {
     this.editedProduct = new Product(this.product);
-    this.changeEditMode(value);
+    this.editMode = value;
   }
 }

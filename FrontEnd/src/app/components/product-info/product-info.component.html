@@ -1,7 +1,7 @@
 <section>
     <div class="flex">
         <div id="img">
-            <img src="{{product.photoPath}}" class="product-img">
+            <img [src]="product.photoPath" class="product-img">
         </div>
         <div class="other-content">
             <div class="title">
@@ -11,9 +11,9 @@
                     <button id="actions" class="btn-dropdown-not-active" (click)="showActions()">
                         <i id="icon-actions" class="fas fa-ellipsis-v"></i>
                     </button>
-                    <div class="dropdown-content" id="dropdown-content-actions">
+                    <div id="dropdown-content-actions">
                         <button class="btn-action marb-1" (click)="enableEditMode()">Edit</button>
-                        <button class="btn-action marb-1">Delete</button>
+                        <button class="btn-action marb-1" (click)="delete()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
             <p id="price">{{product.price | currency:'USD'}}</p>
             <div id="color" class="marb-1">
                 <p><strong>Color:</strong></p>
-                <span id="color-circle" [ngStyle]="{'background': product.color, 'border': '0.13rem solid ' + product.color}"></span>
+                <span id="color-circle" [ngStyle]="{'background': product.color, 'border': '0.13rem solid ' + (product.color === '#ffffff' ? 'black' : product.color)}"></span>
             </div>
             <p class="marb-1">
                 <strong>Volume:</strong> {{product.volume}}

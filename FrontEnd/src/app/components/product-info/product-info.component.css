@@ -19,15 +19,8 @@ h1 {
     background-color: rgb(224, 224, 224);
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    min-width: 20rem;
-    z-index: 1;
-}
-
 .show {
-    display: block;
+    display: block !important;
 }
 
 .btn-dropdown-not-active {
@@ -43,12 +36,20 @@ h1 {
     color: #333;
 }
 
+i {
+    pointer-events: none;
+}
+
 .dropdown-actions {
     position: relative;
     display: inline-block;
 }
 
 #dropdown-content-actions {
+    display: none;
+    position: absolute;
+    min-width: 20rem;
+    z-index: 1;
     border-radius: 1rem;
     left: -16rem;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -101,6 +102,7 @@ h1 {
 
 .desc {
     margin-top: 2rem;
+    white-space: pre-line;
 }
 
 .btn {

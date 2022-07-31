@@ -44,4 +44,9 @@ VALUES
     ('Lipliner', ' With the help of the lipliner, you can quickly emphasize the contour and visually correct the shape of the lips. And all this against the background of practical advantages: a soft formula and a matte finish.', 4, 2, 'MAKEUP',
      '#8e4e4f', '1.7 g', 'assets/images/makeup/makeup12.jpg'),
     ('The City Mini Palette', 'Shadows do not dust and stay on the eyelids for a long time. Suitable for those who wear lenses. Can be applied both with a brush and with the fingers. Shimmer shades lay more beautifully and unfold when using the finger technique. You can choose between matte and shiny texture. They do not clump together in the folds of the eyelids when applied to the base.', 1, 7.5, 'MAKEUP',
-     '#9d7c73', '6 g', 'assets/images/makeup/makeup13.jpg');
+     '#9d7c73', '6 g', 'assets/images/makeup/makeup13.jpg'),
+    ('Sweet Cheeks Matte Blush', E'- a rich shade palette that allows you to mix colors;\n- highly pigmented formula;\n- silky texture that is pleasant to apply;\n- creates an excellent tinted coating' ||
+        ' of the desired intensity;\n- provides a natural and stable finish;\n- ideal for both home and professional use.', 5, 7.5, 'MAKEUP', '#ac8a80',
+     '5 g', 'assets/images/makeup/makeup14.jpg'),
+    ('Control Freak Eyebrow Gel', 'Thanks to its unique composition, NYX Professional Makeup Control Freak Eyebrow Gel allows you to control even thick and unruly hairs. It can be applied on top of shadows and pencil, you will not harm your favorite shade, but only emphasize its saturation. The gel perfectly smooths the eyebrows, and also gives them the shape you originally intended. Active components of extreme resistance allow the product to control the movement of hairs throughout the day, regardless of strong wind, temperature changes and other weather conditions.', 5, 7, 'MAKEUP',
+     '#ffffff', '9 g', 'assets/images/makeup/makeup15.jpg');
