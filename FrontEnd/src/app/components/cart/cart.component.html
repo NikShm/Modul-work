@@ -28,9 +28,12 @@
 
     <div class="total-price">{{product.price | currency:'USD'}}</div>
   </div>
-  <pagination-controls previousLabel="Previous"
-                       nextLabel="Next" (pageChange)="pageFav.page = $event.valueOf();">
-  </pagination-controls>
+  <div style="width: 200px; font-size: 10px; margin: auto; text-align: center; color: #6f2f4a;">
+    <pagination-controls previousLabel="Previous"
+                         nextLabel="Next" (pageChange)="pageFav.page = $event.valueOf();">
+    </pagination-controls>
+  </div>
+
   <div class="item2">
     <h3 class="total">Total:</h3>
     <div class="total-price2">{{totalSum() | number:'1.0-2'| currency:'USD'}}</div>

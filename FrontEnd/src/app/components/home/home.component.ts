@@ -3,6 +3,7 @@ import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {Router} from "@angular/router";
 import {CartService} from "../../services/cart.service";
+import {FavouriteService} from "../../services/favourite.service";
 
 @Component({
   selector: 'app-home',
@@ -21,12 +22,18 @@ export class HomeComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private router: Router,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private favouriteService: FavouriteService) {
   }
 
   addToCart(product: Product) {
     this.cartService.addToCart(product);
     window.alert('Your product has been added to the cart!');
+  }
+
+  addToFavourite(product: Product) {
+    this.favouriteService.addToFavourite(product);
+    window.alert('Your product has been added to the favourites!');
   }
 
   ngOnInit() {

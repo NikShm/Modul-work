@@ -9,6 +9,16 @@ form {
     border-radius: 0.5rem;
 }
 
+.aboutHeading{
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color:#333;
+    font-size: 4rem;
+    background:rgba(255, 51, 153,.05);
+    padding: 0.5rem;
+}
+
 input, select, textarea {
     margin-top: 0.4rem;
     padding: 1rem;

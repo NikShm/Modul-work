@@ -616,8 +616,8 @@ input[type=text] {
   margin-top: 130px;
   margin-bottom: 15px;
   text-align: center;
-  font-size: 18px;
-  color:var(--pink);
+  color:#333;
+  font-size: 4rem;
   background:rgba(255, 51, 153,.05);
 }
 
