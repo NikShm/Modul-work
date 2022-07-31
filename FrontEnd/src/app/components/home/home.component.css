@@ -8,10 +8,10 @@ section {
 
 .heading {
   text-align: center;
-  font-size: 4rem;
-  color:#333;
   padding:1rem;
   margin:2rem 0;
+  color:#333;
+  font-size: 4rem;
   background:rgba(255, 51, 153,.05);
 }
 
