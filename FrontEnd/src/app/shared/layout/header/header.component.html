@@ -15,7 +15,7 @@
 
     <nav class="navbar">
        <a routerLink="/" fragment="home">Home</a>
-        <a (click)="toAbout()">About</a>
+        <a routerLink="/" fragment="about">About</a>
         <div class="dropdown-nav">
             <a routerLink="/products" fragment="products">Products ▼</a>
             <div class="dropdown-content dropdown-content-nav">
@@ -27,7 +27,7 @@
                 <a name="FOR_MEN" (click)="search($event)">For men</a>
             </div>
         </div>
-        <a (click)="toContact()">Contact</a>
+        <a routerLink="/" fragment="contact">Contact</a>
     </nav>
 
     <div class="icons">

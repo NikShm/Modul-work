@@ -11,8 +11,8 @@ export class HeaderComponent implements OnInit {
 
   search(event:any) {
     this.saveCategory.emit(event)
-    // this.productService.searchHeader(event.target.name)
-    this.router.navigate(["/","products"])
+    this.productService.searchHeader(event.target.name)
+    this.router.navigate(["/","products"]).then()
   }
 
   @Output() saveCategory= new EventEmitter<any>()
@@ -29,6 +29,6 @@ export class HeaderComponent implements OnInit {
   }
 
   toContact() {
-    this.router.navigate([""]).then(()=> window.setTimeout(()=>{console.log("ss");window.scroll(0,2860)},100))//
+    this.router.navigate([""]).then(()=> window.scroll(0,2860))//
   }
 }
