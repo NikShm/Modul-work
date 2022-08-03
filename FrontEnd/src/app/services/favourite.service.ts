@@ -36,7 +36,7 @@ export class FavouriteService {
 
   clearFavourite() {
     this.productsFav.splice(0, this.productsFav.length);
-    return localStorage.clear();
+    return localStorage.removeItem("productsFav");
   }
   constructor() { }
 }

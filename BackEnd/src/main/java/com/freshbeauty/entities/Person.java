@@ -1,10 +1,11 @@
 package com.freshbeauty.entities;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.freshbeauty.dto.UserDTO;
+import com.freshbeauty.enums.RoleType;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 
 /*
 @author Микола
@@ -18,12 +19,15 @@ import javax.persistence.Table;
 public class Person {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="role")
-    private String role;
-    @Column(name="login")
+    @Column(name="role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Type(type = "enum")
+    private RoleType role;
+    @Column(name="login", length = 128, nullable = false)
     private String login;
-    @Column(name="password")
+    @Column(name="password", length = 32, nullable = false)
     private String password;
 
     @Override
@@ -44,11 +48,11 @@ public class Person {
         this.id = id;
     }
 
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(RoleType role) {
         this.role = role;
     }
 

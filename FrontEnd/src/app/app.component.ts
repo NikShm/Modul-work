@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  user = {name:"user", role:"NONE"};
+  user = {login:"user", role:"CUSTOMER"};
   ngOnInit(){
-      if(localStorage.getItem(this.user.name) == null){
-        localStorage.setItem(this.user.name,this.user.role)
+      if(localStorage.getItem("user") == null){
+        localStorage.setItem("user",JSON.stringify(this.user))
       }
   }
 }

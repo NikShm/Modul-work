@@ -36,7 +36,7 @@ export class CartService {
 
   clearCart() {
     this.products.splice(0, this.products.length);
-    return localStorage.clear();
+    return localStorage.removeItem("products");
   }
   constructor() { }
 }

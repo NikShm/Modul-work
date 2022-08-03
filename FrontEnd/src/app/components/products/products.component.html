@@ -4,7 +4,7 @@
   <div class="aboutHeading">
     <h1>Products</h1>
     <button id="add-product" (click)="openCreatePage()">
-      <i class="fas fa-plus-circle"></i>
+      <i [ngClass]="classCreateButton"></i>
     </button>
   </div>
   <div class="container">

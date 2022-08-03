@@ -3,11 +3,11 @@
     <h1>Log In</h1>
     <form>
       <div class="inputbox">
-        <input name="login" type="text" [(ngModel)]="login" required="required">
+        <input name="login" type="text" [(ngModel)]="login" (keydown.enter)="submit()" required="required">
         <span>Login</span>
       </div>
       <div class="inputbox">
-        <input name="password" type="password" [(ngModel)]="password" required="required">
+        <input name="password" type="password" (keydown.enter)="submit()" [(ngModel)]="password" required="required">
         <span>Password</span>
       </div>
       <div class="inputbox">

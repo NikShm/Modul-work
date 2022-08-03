@@ -9,12 +9,16 @@ import {Product} from "../models/product";
     providedIn: 'root'
 })
 export class UserService {
+    private user:User = {login:"user", role:"CUSTOMER"}
     constructor(private http: HttpClient) {
     }
 
     getUser(login: string, password:string): Observable<User> {
         return this.http.get<User>('http://localhost:8080/api/user/login=' + login + "/password=" + password).pipe(map((data: any) => {
+            if(data != null) {
                 return new User(data);
+            }
+            return this.user;
         }));
     }
 }

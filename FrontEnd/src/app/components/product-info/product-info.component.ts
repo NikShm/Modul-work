@@ -12,14 +12,25 @@ import {CartService} from "../../services/cart.service";
 export class ProductInfoComponent implements OnInit {
     @Input() product!: Product;
 
+    idButtonShowAction = "";
+
+    classButtonShowAction = "";
+
     constructor(private cartService: CartService, private productService: ProductService, private router: Router) {
     }
 
     ngOnInit(): void {
+        if (JSON.parse(localStorage.getItem("user")!).role == "ADMIN"){
+            this.classButtonShowAction = "fas fa-ellipsis-v"
+            this.idButtonShowAction = "actions"
+        } else{
+            this.classButtonShowAction = ""
+            this.idButtonShowAction = ""
+        }
     }
 
     public showActions() {
-        if (localStorage.getItem("user") != "NONE") {
+        if (JSON.parse(localStorage.getItem("user")!).role == "ADMIN") {
           document.getElementById("dropdown-content-actions")?.classList.toggle("show");
           document.getElementById("actions")?.classList.toggle("btn-dropdown-active");
         }
@@ -52,7 +63,7 @@ export class ProductInfoComponent implements OnInit {
 
     delete() {
         if (window.confirm("Are you sure you want to permanently delete this product?")) {
-            this.productService.deleteProduct(this.product.id).subscribe((res) => {
+            this.productService.deleteProduct(this.product.id).subscribe(() => {
                 window.alert(`Product was deleted successfully.`);
                 this.router.navigate(['/products']);
             });
