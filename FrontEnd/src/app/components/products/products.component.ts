@@ -5,6 +5,9 @@ import {Page} from "../../models/page";
 
 import {CartService} from "../../services/cart.service";
 import {FavouriteService} from "../../services/favourite.service";
+import { Router } from '@angular/router';
+import { Brand } from 'src/app/models/brand';
+import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
     selector: 'app-products',
@@ -14,14 +17,18 @@ import {FavouriteService} from "../../services/favourite.service";
 export class ProductsComponent implements OnInit {
 
     products: Product[] = [];
-
+    brands: Brand[] = [];
     allProduct = 0;
-
     pageCount = 1;
-
     sortValue = "";
-
     searchParameter = this.productService.getSearchParameter();//new Search(null, "", 0, 0, "name", "ASC", 0, 6, null);
+
+    ngOnInit(): void {
+        this.productService.getBrands().subscribe(val => {
+            this.brands = val;
+        });
+        this.search();
+    }
 
     clear() {
         this.searchParameter.categoryType = null;
@@ -92,7 +99,8 @@ export class ProductsComponent implements OnInit {
     constructor(
         private productService: ProductService,
         private cartService: CartService,
-        private favouriteService: FavouriteService) {
+        private favouriteService: FavouriteService,
+        private router: Router) {
     }
 
     search() {
@@ -103,10 +111,6 @@ export class ProductsComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-        this.search();
-    }
-
     addToCart(product: Product) {
         this.cartService.addToCart(product);
         window.alert('Your product has been added to the cart!');
@@ -115,5 +119,9 @@ export class ProductsComponent implements OnInit {
     addToFavourite(product: Product) {
         this.favouriteService.addToFavourite(product);
         window.alert('Your product has been added to the favourites!');
+    }
+
+    openCreatePage() {
+        this.router.navigate(['products/new']);
     }
 }

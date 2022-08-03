@@ -1,6 +1,2 @@
-<app-header></app-header>
-
 <app-product-info [product]="product" (onEdit)="showEditForm($event)" *ngIf="!editMode"></app-product-info>
-<app-product-form [product]="editedProduct" (onInfo)="changeEditMode($event)" *ngIf="editMode"></app-product-form>
-
-<app-footer></app-footer>
+<app-product-form [product]="editedProduct" [mode]="'edit'" (onInfo)="changeEditMode($event)" *ngIf="editMode"></app-product-form>

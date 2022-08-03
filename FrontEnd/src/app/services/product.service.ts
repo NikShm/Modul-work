@@ -1,10 +1,12 @@
 import {Injectable} from "@angular/core";
 import {Product} from "../models/product";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import {Observable, of} from "rxjs";
+import {map, shareReplay, tap} from "rxjs/operators";
 import {Search} from "../models/search";
 import {Page} from "../models/page";
+import { Brand } from "../models/brand";
+import { BrandService } from "./brand.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +14,17 @@ import {Page} from "../models/page";
 export class ProductService {
 
     searchParameter =new Search(null, "", 0, 0, "name", "ASC", 0, 6, null);
+    private brands: Brand[] = [];
+    constructor(private http: HttpClient, private brandService: BrandService) {
+    }
 
-    constructor(private http: HttpClient) {
+    getBrands(): Observable<Brand[]> {
+        let result = this.brandService.getAllBrands().pipe(shareReplay(1));
+        if (!this.brands.length)
+            result.subscribe(val => {
+                this.brands = val
+            });
+        return this.brands.length ? of(this.brands) : result;
     }
 
     getOneProduct(id: string): Observable<Product> {
@@ -23,7 +34,7 @@ export class ProductService {
     async updateProduct(productToUpdate: Product, newImage: File) {
         let productData: Product | FormData;
         const category = productToUpdate.category.replace(/_/g, "-").toLowerCase();
-        let imgPath = newImage ? newImage.name : productToUpdate.photoPath;
+        const imgPath = newImage ? newImage.name : productToUpdate.photoPath;
         const matches = imgPath.match(/.[a-zA-Z]+/g);
         const extension = matches![matches!.length-1];
         const newPath = `assets/images/${category}/${category}${productToUpdate.id}${extension}`;
@@ -42,6 +53,25 @@ export class ProductService {
         productData = new Product(productToUpdate);
         productData.photoPath = newPath;
         await this.http.put('http://localhost:8080/api/products/update/', productData).toPromise();
+    }
+
+    async createProduct(productToCreate: Product, image: File) {
+        let productData: Product | FormData;
+        productData = new Product(productToCreate);
+        
+        const id = <string>await this.http.post('http://localhost:8080/api/products/create/', productData).toPromise();
+        const category = productToCreate.category.replace(/_/g, "-").toLowerCase();
+        const matches = image.name.match(/.[a-zA-Z]+/g);
+        const extension = matches![matches!.length-1];
+        const newPath = `assets/images/${category}/${category}${id}${extension}`;
+
+        productData = new FormData();
+        productData.append('photo', image);
+        productData.append('newPath', newPath);
+        productData.append('id', id);
+
+        await this.http.post('http://localhost:8080/api/products/uploadPhoto/', productData).toPromise(); 
+        return id;
     }
 
     deleteProduct(id: string) {

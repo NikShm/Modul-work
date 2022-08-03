@@ -21,6 +21,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -36,14 +37,11 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements IProductService {
     private final ProductRepository repository;
-    private final BrandRepository brandRepository;
     private final FilesStorageServiceImpl filesService;
     private final ProductMapper mapper;
 
-    public ProductServiceImpl(ProductRepository repository, BrandRepository brandRepository,
-                              FilesStorageServiceImpl filesService, ProductMapper mapper) {
+    public ProductServiceImpl(ProductRepository repository, FilesStorageServiceImpl filesService, ProductMapper mapper) {
         this.repository = repository;
-        this.brandRepository = brandRepository;
         this.filesService = filesService;
         this.mapper = mapper;
     }
@@ -61,10 +59,6 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public void update(ProductDTO dto) throws IOException {
         Product productToUpdate = repository.findById(dto.getId()).orElse(null);
-        if (!Objects.equals(dto.getBrand().getId(), productToUpdate.getBrand().getId())) {
-            Brand brandToUpdate = brandRepository.findById(dto.getBrand().getId()).orElse(null);
-            productToUpdate.setBrand(brandToUpdate);
-        }
         if (!filesService.exists(dto.getPhotoPath()) && dto.getCategory() != productToUpdate.getCategory()) {
             this.filesService.move(productToUpdate.getPhotoPath(), dto.getPhotoPath());
         }
@@ -72,6 +66,19 @@ public class ProductServiceImpl implements IProductService {
         repository.save(updatedProduct);
     }
 
+    @Override
+    public Integer create(ProductDTO dto) {
+        Product createdProduct = mapper.toEntity(new Product(), dto);
+        createdProduct.setCreatedAt(LocalDateTime.now());
+        return repository.save(createdProduct).getId();
+    }
+
+    @Override
+    public void updatePhotoPath(Integer id, String newPath) {
+        Product productToUpdate = repository.findById(id).orElse(null);
+        productToUpdate.setPhotoPath(newPath);
+        repository.save(productToUpdate);
+    }
     @Override
     public void delete(Integer id) throws IOException {
         Product productToDelete = repository.findById(id).orElse(null);

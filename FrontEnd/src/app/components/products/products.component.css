@@ -614,11 +614,31 @@ input[type=text] {
 
 .aboutHeading{
   text-align: center;
-  margin-top: 130px;
-  margin-bottom: 15px;
-  font-size: 4rem;
+  margin-top: 13rem;
+  margin-bottom: 3.1rem;
+  padding: 0.5rem;
   color:#333;
   background:rgba(255, 51, 153,.05);
+}
+
+h1 {
+  font-size: 4rem;
+  display: inline-block;
+}
+
+.fa-plus-circle {
+  color: #333;
+  font-size: 4rem;
+}
+
+.fa-plus-circle:hover {
+  color: #aa5377;
+}
+
+#add-product {
+  border-radius: 50%;
+  margin-left: 2rem;
+  background: none;
 }
 
 .dropdownS select{

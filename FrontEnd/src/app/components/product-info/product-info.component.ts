@@ -19,7 +19,6 @@ export class ProductInfoComponent implements OnInit {
 
   public showActions() {
     document.getElementById("dropdown-content-actions")?.classList.toggle("show");
-    document.getElementById("actions")?.classList.remove("btn-dropdown-not-active");
     document.getElementById("actions")?.classList.toggle("btn-dropdown-active");
   }
 
@@ -33,7 +32,6 @@ export class ProductInfoComponent implements OnInit {
       }
       if (button?.classList.contains('btn-dropdown-active')) {
         button.classList.remove('btn-dropdown-active');
-        button.classList.toggle('btn-dropdown-not-active');
       }
     }
   }

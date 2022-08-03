@@ -60,14 +60,26 @@ public class ProductController {
         service.delete(id);
     }
 
-    @PutMapping(value = "/update/")
+    @PutMapping( "/update/")
     public void update(@RequestBody ProductDTO productDTO) throws IOException {
         this.service.update(productDTO);
     }
 
     @PostMapping("/uploadPhoto/")
-    public void upload(@RequestPart MultipartFile photo, @RequestParam String newPath, @RequestParam String oldPath) throws IOException {
-        this.fileService.delete(oldPath);
+    public void upload(@RequestPart MultipartFile photo, @RequestParam String newPath,
+                       @RequestParam(required = false) String oldPath,
+                       @RequestParam(required = false) Integer id) throws IOException {
+        if (oldPath != null) {
+            this.fileService.delete(oldPath);
+        }
         this.fileService.save(photo, newPath);
+        if (id != null) {
+            this.service.updatePhotoPath(id, newPath);
+        }
+    }
+
+    @PostMapping("/create/")
+    public Integer create(@RequestBody ProductDTO productDTO) {
+        return this.service.create(productDTO);
     }
 }

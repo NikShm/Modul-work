@@ -1,8 +1,12 @@
 <app-header></app-header>
 
 <section class="products" id="products">
-  <h1 class="aboutHeading">Products </h1>
-  <br><br>
+  <div class="aboutHeading">
+    <h1>Products</h1>
+    <button id="add-product" (click)="openCreatePage()">
+      <i class="fas fa-plus-circle"></i>
+    </button>
+  </div>
   <div class="container">
     <div class="search-container-products">
       <form action="#">
@@ -19,11 +23,7 @@
         <form class="dropdownS" action="#">
           <select name="cars" [(ngModel)]="searchParameter.brand">
             <option value="" disabled selected hidden>Brand</option>
-            <option value="Maybelline New York">Maybelline New York</option>
-            <option value="Loreal Paris">Loreal Paris</option>
-            <option value="Artdeco">Artdeco</option>
-            <option value="Lamel Professional">Lamel Professional</option>
-            <option value="NYX">NYX</option>
+            <option *ngFor="let brand of brands" [ngValue]="brand.name">{{brand.name}}</option>
           </select>
         </form>
         <form class="dropdownS" action="#">
@@ -69,8 +69,8 @@
         <div class="image">
           <img src="{{product.photoPath}}" alt="">
           <div class="icons">
-            <a routerLink="/products" class="fas fa-heart" (click)="addToFavourite(product)"></a>
-            <a routerLink="/products" class="cart-btn" (click)="addToCart(product)">Add to cart</a>
+            <a class="fas fa-heart" (click)="addToFavourite(product)"></a>
+            <a class="cart-btn" (click)="addToCart(product)">Add to cart</a>
             <a routerLink="/products/{{product.id}}" class="fas fa-share" ></a>
           </div>
         </div>

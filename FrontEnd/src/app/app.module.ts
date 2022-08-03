@@ -17,14 +17,17 @@ import { FooterComponent } from './shared/layout/footer/footer.component';
 import { ProductComponent } from './components/product/product.component';
 import { AboutIconsComponent } from './shared/layout/about-icons/about-icons.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
-
-import {ProductService} from "./services/product.service";
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 import { FormatPipe } from './pipes/format.pipe';
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import { TrimDirective } from './components/product-form/directives/trim.directive';
+import { FileValidatorDirective } from './components/product-form/directives/file-validator.directive';
+
+import {ProductService} from "./services/product.service";
 import {BrandService} from "./services/brand.service";
 import {CartService} from "./services/cart.service";
 import {FavouriteService} from "./services/favourite.service";
+
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import {FavouriteService} from "./services/favourite.service";
     AboutIconsComponent,
     FormatPipe,
     ProductInfoComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    TrimDirective,
+    FileValidatorDirective
   ],
   imports: [
     BrowserModule,

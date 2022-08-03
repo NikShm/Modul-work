@@ -4,7 +4,7 @@ import com.freshbeauty.dto.ProductDTO;
 import com.freshbeauty.entities.Product;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * @author Yuliana
@@ -41,6 +41,9 @@ public class ProductMapper {
         entity.setId(dto.getId());
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
+        if (entity.getBrand() == null || !Objects.equals(entity.getBrand().getId(), dto.getBrand().getId())) {
+            entity.setBrand(brandMapper.toEntity(dto.getBrand()));
+        }
         entity.setPrice(dto.getPrice());
         entity.setCategory(dto.getCategory());
         entity.setColor(dto.getColor());
