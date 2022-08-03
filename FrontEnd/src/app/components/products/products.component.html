@@ -53,11 +53,11 @@
         <hr style="width: 300px;">
         <div style="margin-top: 5px;">
           <input type="number" [(ngModel)]="searchParameter.priceFrom" autocomplete="off"
-                 style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px" placeholder="0" name="search">
+                 style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px" placeholder="0" name="search" [min]="0" [step]="1">
           <input type="number" [(ngModel)]="searchParameter.priceTo" autocomplete="off" style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px"
-                 placeholder="0" name="search" [min]="0" [max]="99999" [step]="1">
+                 placeholder="0" name="search" [min]="0" [step]="1">
         </div>
-        <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="changePage(0)"><p style="margin-left: -10px">Apply</p></button>
+        <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="apply()"><p style="margin-left: -10px">Apply</p></button>
         <button type="button" style="width: 95px;" class="btn btn-dark btn-lg" (click)="clear()"><p style="margin-left: -8px">Clear</p></button>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -65,7 +65,7 @@
     </div>
     <div class="box-container"  style="margin-top: -250px">
 
-      <div class="box" *ngFor="let product of products | paginate: { itemsPerPage: searchParameter.pageSize, currentPage: searchParameter.page + 1, totalItems: allProduct}">
+      <div class="box" *ngFor="let product of products | paginate: {itemsPerPage: searchParameter.pageSize, currentPage: searchParameter.page + 1, totalItems: allProduct}">
         <div class="image">
           <img src="{{product.photoPath}}" alt="">
           <div class="icons">
@@ -80,16 +80,19 @@
         </div>
       </div>
       </div>
-    <div style="width: 900px; margin: auto; background-color: #fff; margin-bottom: 50px; margin-top: 50px; margin-bottom: 130px">
-      <button style="width: 150px; font-size: 16px; margin-top: -5px; float: left" class="btn btn-dark btn-lg" (click)="getFirst()">First Page</button>
+    <div style="width: 700px; margin: auto; background-color: #fff; margin-bottom: 50px; margin-top: 50px; margin-bottom: 130px">
       <div style=" position: relative; margin: auto; font-size: 16px; margin-top: 20px">
-        <div style="width: 600px; text-align: center; background-color: #fff; margin: auto;">
+        <button style="width: 150px; font-size: 16px; margin-top: -5px; float: left" class="btn btn-dark btn-lg" (click)="getFirst()">First Page</button>
+        <div style="width: 400px; text-align: center; background-color: #fff; margin: auto;">
           <pagination-controls previousLabel="Previous"
-                               nextLabel="Next" (pageChange)="changePage($event.valueOf() - 1); onActivate($event)">
+                               nextLabel="Next"
+                               class="my-pagination"
+                               [maxSize]="7"
+                               (pageChange)="changePage($event.valueOf() - 1)">
           </pagination-controls>
         </div>
+        <button style="width: 150px; font-size: 16px; float: right;  margin-top: -47px" class="btn btn-dark btn-lg" (click)="getLast()">Last Page</button>
       </div>
-      <button style="width: 150px; font-size: 16px; float: right;  margin-top: -50px" class="btn btn-dark btn-lg" (click)="getLast()">Last Page</button>
     </div>
   </div>
 
