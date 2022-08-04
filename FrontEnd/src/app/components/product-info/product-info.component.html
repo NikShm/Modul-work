@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section>
     <div class="flex">
         <div id="img">
@@ -8,8 +9,8 @@
                 <h1>{{product.name}}</h1>
                 
                 <div class="dropdown-actions">
-                    <button id="actions" class="btn-dropdown-not-active" (click)="showActions()">
-                        <i id="icon-actions" class="fas fa-ellipsis-v"></i>
+                    <button id="actions" (click)="showActions()">
+                        <i class="fas fa-ellipsis-v"></i>
                     </button>
                     <div id="dropdown-content-actions">
                         <button class="btn-action marb-1" (click)="enableEditMode()">Edit</button>
@@ -31,7 +32,7 @@
                 {{product.category | format}}
             </p>
             <p class="marb-1">
-                <strong>Brand:</strong> {{product.brand.name}} 
+                <strong>Brand:</strong> {{product.brand!.name}} 
             </p>
             <p class="desc">
                 {{product.description}}
@@ -40,3 +41,4 @@
         </div>
     </div>
 </section>
+<app-footer></app-footer>

@@ -17,7 +17,7 @@
 
         <div class="description">
             <a routerLink="/products/{{product.id}}"><span>{{ product.name }}</span>
-                <span>{{ product.brand.name }}</span>
+                <span>{{ product.brand!.name }}</span>
                 <span>{{ product.volume }}</span></a>
         </div>
 

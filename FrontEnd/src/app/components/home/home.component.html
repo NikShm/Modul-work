@@ -54,8 +54,8 @@
         <div class="image">
           <img src="{{product.photoPath}}" alt="">
           <div class="icons">
-            <a routerLink="/#products" class="fas fa-heart" (click)="addToFavourite(product)"></a>
-            <a routerLink="/#products" class="cart-btn"><button class="AddTo" type="button" (click)="addToCart(product)"><p style="font-size: 16px ;color: #ffffff">Add to cart</p></button></a>
+            <a class="fas fa-heart" (click)="addToFavourite(product)"></a>
+            <a class="cart-btn"><button class="AddTo" type="button" (click)="addToCart(product)"><p style="font-size: 16px ;color: #ffffff">Add to cart</p></button></a>
             <a routerLink="products/{{product.id}}" class="fas fa-share"></a>
           </div>
         </div>

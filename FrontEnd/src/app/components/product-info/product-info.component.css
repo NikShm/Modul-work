@@ -13,22 +13,19 @@ h1 {
 #actions {
     padding: 1.075rem 1.7rem;
     border-radius: 50%;
+    background: none;
 }
 
 #actions:hover {
-    background-color: rgb(224, 224, 224);
+    background: rgb(224, 224, 224);
 }
 
 .show {
     display: block !important;
 }
 
-.btn-dropdown-not-active {
-    background-color: white;
-}
-
 .btn-dropdown-active {
-    background-color: rgb(195, 195, 195);
+    background: rgb(195, 195, 195) !important;
 }
 
 .fa-ellipsis-v {

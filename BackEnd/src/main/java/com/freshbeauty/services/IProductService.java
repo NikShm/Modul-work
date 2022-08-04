@@ -21,4 +21,6 @@ public interface IProductService {
     List<ProductDTO> getLastProducts(int quantity);
     PageDTO<ProductDTO> getPage(SearchDTO search);
     void update(ProductDTO dto) throws IOException;
+    Integer create(ProductDTO dto);
+    void updatePhotoPath(Integer id, String newPath);
 }

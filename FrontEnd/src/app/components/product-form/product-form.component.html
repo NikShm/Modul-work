@@ -1,32 +1,34 @@
+<app-header></app-header>
 <section>
-    <h1 class="aboutHeading">Edit Product</h1>
-       <form #editForm="ngForm" novalidate autocomplete="off" (ngSubmit)="onSave()">
+    <h1 class="aboutHeading">{{mode}} Product</h1>
+       <form #productForm="ngForm" novalidate autocomplete="off" (ngSubmit)="onSave()">
         <div class="flex">
             <div id="photo-picker">
                 <label for="photo">Photo</label>
-                <input type="file" name="photo" id="photo" accept="image/png, image/jpeg" (change)="previewImage()">
+                <input type="file" name="photo" id="photo" accept="image/png, image/jpeg" appFileValidator (change)="previewImage()" ngModel #photo="ngModel" [required]="mode === 'create'">
                 <div id="preview">
-                    <img class="product-img" id="preview-img" [src]="product.photoPath" alt="preview">
+                    <img class="product-img" id="preview-img" [src]="product.photoPath">
                 </div>
+                <div *ngIf="!photo.valid && !photo.untouched" class="error">Photo is required</div>
             </div>
             <div class="other-content">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" maxlength="128" [(ngModel)]="product.name" #name="ngModel" required>
-                <div [hidden]="name.valid || name.untouched" class="error">Name is required</div>
+                <input type="text" name="name" id="name" maxlength="128" [(ngModel)]="product.name" #name="ngModel" required appTrim>
+                <div *ngIf="!name.valid && !name.untouched" class="error">Name is required</div>
 
                 <label for="price">Price</label>
                 <input type="number" name="price" id="price" min="1" max="10000" step="0.01" [(ngModel)]="product.price" #price="ngModel" required>
-                <div [hidden]="price.valid || price.untouched" class="error">Incorrect price</div>
+                <div *ngIf="!price.valid && !price.untouched" class="error">Incorrect price</div>
 
                 <label for="color">Color</label>
                 <input type="color" name="color" id="color" [(ngModel)]="product.color" required>
 
                 <label for="volume">Volume</label>
-                <input type="text" name="volume" id="volume" minlength="2" maxlength="8" [(ngModel)]="product.volume" #volume="ngModel" required>
-                <div [hidden]="volume.valid || volume.untouched" class="error">Volume is required</div>
+                <input type="text" name="volume" id="volume" minlength="2" maxlength="8" [(ngModel)]="product.volume" #volume="ngModel" required appTrim>
+                <div *ngIf="!volume.valid && !volume.untouched" class="error">Volume is required</div>
 
                 <label for="category">Category</label>
-                <select name="category" id="category" [(ngModel)]="product.category">
+                <select name="category" id="category" [(ngModel)]="product.category" #category="ngModel" required>
                     <option value="PERFUMERY">Perfumery</option>
                     <option value="MAKEUP">Makeup</option>
                     <option value="HAIR">Hair</option>
@@ -34,19 +36,22 @@
                     <option value="BODY_AND_BATH">Body and bath</option>
                     <option value="FOR_MEN">For men</option>
                 </select>
+                <div *ngIf="!category.valid && !category.untouched" class="error">Category is required</div>
 
                 <label for="brand">Brand</label>
-                <select [compareWith]="compareFn" name="brand" id="brand" [(ngModel)]="product.brand">
+                <select [compareWith]="compareFn" name="brand" id="brand" [(ngModel)]="product.brand" #brand="ngModel" required>
                     <option *ngFor="let brand of brands" [ngValue]="brand">{{brand.name}}</option>
                 </select>
+                <div *ngIf="!brand.valid && !brand.untouched" class="error">Brand is required</div>
             </div>
         </div>
         <label for="description">Description</label>
-        <textarea name="description" id="description" maxlength="10000" [(ngModel)]="product.description"></textarea>
+        <textarea name="description" id="description" maxlength="10000" [(ngModel)]="product.description" appTrim></textarea>
 
         <div id="buttons">
-            <button type="button" class="btn" id="cancel" (click)="returnToInfo()">Cancel</button>
-            <button type="submit" class="btn" id="edit" [disabled]="editForm.invalid">Save</button>
+            <button type="button" class="btn" id="cancel" (click)="exit()">Cancel</button>
+            <button type="submit" class="btn" id="edit" [disabled]="productForm.invalid" [title]="productForm.invalid ? 'Fill all fields with valid values.' : ''">Save</button>
         </div>
     </form>
 </section>
+<app-footer></app-footer>

@@ -42,10 +42,13 @@ input[type=file] {
     padding: 0.72rem;
 }
 
-input.ng-touched.ng-invalid {
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
     border: 0.2rem solid #dc3545;
     margin-bottom: 0;
     background: #fff1ee;
+}
+input[type=file].ng-touched.ng-invalid {
+    margin-bottom: 1.5rem;
 }
 
 #buttons {
@@ -76,6 +79,7 @@ input.ng-touched.ng-invalid {
 }
 
 h1 {
+    text-transform: capitalize;
     text-align: center;
     font-size: 4rem;
     color: #aa5377;
