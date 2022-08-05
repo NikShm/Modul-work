@@ -10,7 +10,7 @@ import {CartService} from "../../services/cart.service";
 })
 export class FavouriteComponent implements OnInit {
     @Input() quantity: number = 0;
-    products = this.favouriteService.getItemsFromFav();
+    productsFav = this.favouriteService.getItemsFromFav();
     pageFav = {page: 0, pageSize: 5, allProduct: 0, pageCount: 1}
 
   constructor(
@@ -23,7 +23,7 @@ export class FavouriteComponent implements OnInit {
 
   addToCart(product: Product) {
      this.cartService.addToCart(product);
-     window.alert('Your product has been added to the cart!');
+     window.confirm('Your product has been added to the cart!');
   }
 
   clearFavourite(){
@@ -31,8 +31,8 @@ export class FavouriteComponent implements OnInit {
   }
 
   delFromFavourite(product: Product): void {
-      const index: number = this.products.indexOf(product);
+      const index: number = this.productsFav.indexOf(product);
       this.favouriteService.delFromFavourite(index);
-      window.alert('Your product will be deleted from the favourites!');
+      window.confirm('Your product will be deleted from the favourites!');
   }
 }

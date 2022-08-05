@@ -93,7 +93,7 @@ body {
 .delete-btn {
   width: 18px;
   height: 17px;
-/**/
+  /**/
 }
 
 .like-btn {
@@ -116,9 +116,8 @@ body {
 }
 
 .image {
-  max-width: 200px;
-  text-align: center;
   width: 200px;
+  text-align: center;
   margin-top: -10px;
   margin-left: -60px;
 }
@@ -126,9 +125,9 @@ body {
 .description {
   position: absolute;
   padding-top: 10px;
-  margin-left: 220px;
-  margin-right: 20px;
-  width: 200px;
+  margin-left: 240px;
+  margin-right: 0px;
+  width: 220px;
 }
 
 .description span {
@@ -149,9 +148,17 @@ body {
 }
 
 .quantity {
+  position: relative;
+  width: 100px;
   padding-top: 20px;
-  margin-right: 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+  margin-right: 10px;
   margin-left: 250px;
+  float: right;
+
 }
 .quantity input {
   -webkit-appearance: none;
@@ -189,13 +196,15 @@ span img:hover{
 }
 
 .total-price {
-  width: 83px;
+  position: relative;
+  float: right;
+  width: 100px;
   padding-top: 27px;
   text-align: center;
   font-size: 16px;
   color: #43484D;
   font-weight: 300;
-  margin-right: 30px;
+  margin-right: 0px;
 }
 
 .total-price2 {
