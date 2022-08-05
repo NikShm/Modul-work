@@ -29,3 +29,10 @@ a {
 button {
   cursor: pointer;
 }
+
+pagination-controls .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #aa5377;
+    border-radius: 10px;
+    cursor: pointer;
+}

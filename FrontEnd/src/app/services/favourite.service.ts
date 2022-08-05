@@ -4,35 +4,39 @@ import {Product} from "../models/product";
   providedIn: 'root'
 })
 export class FavouriteService {
-  products: Product[] = [];
+  productsFav: Product[] = [];
   done: boolean = false;
 
   addToFavourite(product: Product) {
     this.done = true;
-    for(let i = 0; i < this.products.length; i++){
-      if (this.products[i].id == product.id){
+    for(let i = 0; i < this.productsFav.length; i++){
+      if (this.productsFav[i].id == product.id){
         this.done = false;
       }
     }
 
     if (!this.done){
-      return this.products;
+      return this.productsFav;
     }
     else {
-      return this.products.push(product);
+      this.productsFav.push(product);
+      return localStorage.setItem('productsFav', JSON.stringify(this.productsFav));
     }
   }
 
   delFromFavourite(index:any) {
-    this.products.splice(index, 1);
+    this.productsFav.splice(index, 1);
+    localStorage.setItem('productsFav', JSON.stringify(this.productsFav));
+    return JSON.parse(localStorage.getItem('productsFav') || '[]');
   }
 
   getItemsFromFav() {
-    return this.products;
+    return this.productsFav = JSON.parse(localStorage.getItem('productsFav') || '[]');
   }
 
   clearFavourite() {
-    this.products.splice(0, this.products.length);
+    this.productsFav.splice(0, this.productsFav.length);
+    return localStorage.clear();
   }
   constructor() { }
 }

@@ -8,7 +8,7 @@
     </button>
   </div>
   <div class="container">
-    <div class="search-container-products">
+    <div class="search-container-products" style="margin-bottom: 400px">
       <form action="#">
         <input [(ngModel)]="searchParameter.name" type="text" autocomplete="off"
                placeholder="Search..." name="search">
@@ -16,7 +16,7 @@
                 class="fa fa-search"></i></button>
       </form>
     </div>
-    <div class="side-menu">
+    <div class="side-menu" style="margin-top: -400px">
       <div class="col-lg-3 blog-form">
         <h2 class="blog-sidebar-title"><b>Categories</b></h2>
         <hr style="width: 300px;">
@@ -63,7 +63,7 @@
         <div>&nbsp;</div>
       </div>
     </div>
-    <div class="box-container" style="margin-bottom: 20px;">
+    <div class="box-container"  style="margin-top: -250px">
 
       <div class="box" *ngFor="let product of products | paginate: { itemsPerPage: searchParameter.pageSize, currentPage: searchParameter.page + 1, totalItems: allProduct}">
         <div class="image">
@@ -80,18 +80,20 @@
         </div>
       </div>
       </div>
-    <div style="width: 600px; margin: auto; margin-bottom: 50px; margin-top: 270px">
+    <div style="width: 900px; margin: auto; background-color: #fff; margin-bottom: 50px; margin-top: 50px; margin-bottom: 130px">
+      <button style="width: 150px; font-size: 16px; margin-top: -5px; float: left" class="btn btn-dark btn-lg" (click)="getFirst()">First Page</button>
       <div style=" position: relative; margin: auto; font-size: 16px; margin-top: 20px">
-        <button style="width: 150px; font-size: 16px; position: absolute; margin-top: -5px" class="btn btn-dark btn-lg" (click)="getFirst()">First Page</button>
-        <div style="width: 280px; margin: auto; padding-left: 30px">
+        <div style="width: 600px; text-align: center; background-color: #fff; margin: auto;">
           <pagination-controls previousLabel="Previous"
                                nextLabel="Next" (pageChange)="changePage($event.valueOf() - 1)">
           </pagination-controls>
         </div>
-        <button style="width: 150px; font-size: 16px; position: absolute; margin-left: 500px; margin-top: -37px" class="btn btn-dark btn-lg" (click)="getLast()">Last Page</button>
       </div>
+      <button style="width: 150px; font-size: 16px; float: right;  margin-top: -50px" class="btn btn-dark btn-lg" (click)="getLast()">Last Page</button>
     </div>
   </div>
+
+
 </section>
 
 <app-footer></app-footer>

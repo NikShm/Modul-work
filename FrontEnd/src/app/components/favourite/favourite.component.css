@@ -132,9 +132,8 @@ body {
 }
 
 .image {
-    max-width: 200px;
-    text-align: center;
     width: 200px;
+    text-align: center;
     margin-top: -10px;
     margin-left: -60px;
 }
@@ -165,8 +164,10 @@ body {
 }
 
 .quantity {
+    width: 120px;
+    text-align: center;
     padding-top: 30px;
-    margin-right: 60px;
+    margin-right: 20px;
     margin-left: 250px;
 }
 .quantity input {
