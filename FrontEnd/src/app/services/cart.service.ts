@@ -19,20 +19,24 @@ export class CartService {
       return this.products;
     }
     else {
-      return this.products.push(product);
+      this.products.push(product);
+      return localStorage.setItem('products', JSON.stringify(this.products));
     }
   }
 
   delFromCart(index:any) {
     this.products.splice(index, 1);
+    localStorage.setItem('products', JSON.stringify(this.products));
+    return JSON.parse(localStorage.getItem('products') || '[]');
   }
 
   getItems() {
-    return this.products;
+    return this.products = JSON.parse(localStorage.getItem('products') || '[]');
   }
 
   clearCart() {
-   this.products.splice(0, this.products.length);
+    this.products.splice(0, this.products.length);
+    return localStorage.clear();
   }
   constructor() { }
 }
