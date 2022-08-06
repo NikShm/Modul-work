@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
     allProduct = 0;
     pageCount = 1;
     sortValue = "";
+    classCreateButton = "";
     searchParameter = new Search(null, "", 0, 0, "name", "ASC", 0, 25, null);
 
     clear() {
@@ -53,11 +54,13 @@ export class ProductsComponent implements OnInit {
 
     apply() {
         this.searchParameter.page = 0;
+        this.productService.setSearchParameter(this.searchParameter)
         this.search();
     }
 
     changePage(page: number) {
         this.searchParameter.page = page;
+        this.productService.setSearchPage(page);
         this.search();
     }
 
@@ -91,11 +94,13 @@ export class ProductsComponent implements OnInit {
 
     getFirst() {
         this.searchParameter.page = 0;
+        this.productService.setSearchPage(0);
         this.search()
     }
 
     getLast() {
-        this.searchParameter.page = this.pageCount - 1;
+        this.searchParameter.page = this.pageCount != 0 ? this.pageCount - 1 : 1;
+        this.productService.setSearchPage(this.pageCount != 0 ? this.pageCount - 1 : 1);
         this.search()
     }
 
@@ -107,7 +112,7 @@ export class ProductsComponent implements OnInit {
     }
 
     search() {
-        this.productService.search(this.searchParameter).subscribe((page: Page) => {
+        this.productService.search().subscribe((page: Page) => {
             this.products = page.products;
             this.allProduct = page.totalItem;
             this.pageCount = page.pageCount
@@ -115,7 +120,15 @@ export class ProductsComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.productService.getBrands().subscribe(val => {
+            this.brands = val;
+        });
         this.search();
+        if (JSON.parse(localStorage.getItem("user")!).role == "ADMIN") {
+            this.classCreateButton = "fas fa-plus-circle"
+        } else {
+            this.classCreateButton = ""
+        }
     }
 
     addToCart(product: Product) {
@@ -129,6 +142,8 @@ export class ProductsComponent implements OnInit {
     }
 
     openCreatePage() {
-        this.router.navigate(['products/new']);
+        if (JSON.parse(localStorage.getItem("user")!).role == "ADMIN") {
+            this.router.navigate(['products/new']);
+        }
     }
 }

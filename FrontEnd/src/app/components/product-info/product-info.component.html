@@ -9,8 +9,8 @@
                 <h1>{{product.name}}</h1>
                 
                 <div class="dropdown-actions">
-                    <button id="actions" (click)="showActions()">
-                        <i class="fas fa-ellipsis-v"></i>
+                    <button id="{{idButtonShowAction}}" (click)="showActions()">
+                        <i [ngClass]="classButtonShowAction"></i>
                     </button>
                     <div id="dropdown-content-actions">
                         <button class="btn-action marb-1" (click)="enableEditMode()">Edit</button>
