@@ -21,6 +21,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +113,8 @@ public class ProductServiceImpl implements IProductService {
     private Predicate getPredicate(SearchDTO search, CriteriaBuilder criteriaBuilder, Root<Product> product) {
         List<Predicate> predicates = new ArrayList<>();
         String value = search.getName();
+        BigDecimal priceFrom = search.getPriceFrom();
+        BigDecimal priceTo = search.getPriceTo();
         if (value != null) {
             predicates.add(QueryHelper.ilike(product.get("name"), criteriaBuilder, value));
         }
@@ -121,6 +124,12 @@ public class ProductServiceImpl implements IProductService {
         }
         if (search.getCategoryType() != null) {
             predicates.add(criteriaBuilder.equal(product.get("category"), search.getCategoryType()));
+        }
+        if (priceFrom != null) {
+            predicates.add(criteriaBuilder.ge(product.get("price"), priceFrom));
+        }
+        if (priceTo != null) {
+            predicates.add(criteriaBuilder.le(product.get("price"), priceTo));
         }
         return predicates.size() == 1 ? predicates.get(0) : criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }

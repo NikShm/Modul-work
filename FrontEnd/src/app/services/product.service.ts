@@ -13,6 +13,9 @@ import { BrandService } from "./brand.service";
 })
 export class ProductService {
 
+    searchText = null
+
+    categoryType = null
     searchParameter =new Search(null, "", 0, 0, "name", "ASC", 0, 6, null);
     private brands: Brand[] = [];
     constructor(private http: HttpClient, private brandService: BrandService) {
@@ -58,7 +61,7 @@ export class ProductService {
     async createProduct(productToCreate: Product, image: File) {
         let productData: Product | FormData;
         productData = new Product(productToCreate);
-        
+
         const id = <string>await this.http.post('http://localhost:8080/api/products/create/', productData).toPromise();
         const category = productToCreate.category.replace(/_/g, "-").toLowerCase();
         const matches = image.name.match(/.[a-zA-Z]+/g);
@@ -70,7 +73,7 @@ export class ProductService {
         productData.append('newPath', newPath);
         productData.append('id', id);
 
-        await this.http.post('http://localhost:8080/api/products/uploadPhoto/', productData).toPromise(); 
+        await this.http.post('http://localhost:8080/api/products/uploadPhoto/', productData).toPromise();
         return id;
     }
 
@@ -86,13 +89,6 @@ export class ProductService {
         }));
     }
 
-    getAllProduct(): Observable<Product[]> {
-        return this.http.get('http://localhost:8080/api/products/').pipe(map((data: any) => {
-            return data.map(function (product: any): Product {
-                return new Product(product);
-            });
-        }));
-    }
     getAllSortedProductAndSearch(sortType:string, field:string, search:string): Observable<Product[]> {
         return this.http.get('http://localhost:8080/api/products/sort='+sortType+"/field="+field+"/search="+search).pipe(map((data: any) => {
             return data.map(function (product: any): Product {
@@ -101,21 +97,30 @@ export class ProductService {
         }));
     }
 
-    setSearchParameter(search:Search){
-        this.searchParameter = search;
+
+    searchHomePage(text:any){
+        this.searchText = text;
     }
-    getSearchParameter(){
-        return this.searchParameter;
+    searchHeader(text:any){
+        this.categoryType = text;
     }
 
-    searchHomePage(text:string){
-        this.searchParameter.name = text;
-    }
-
-    search(): Observable<Page> {
-        console.log(this.searchParameter)
-        return this.http.post('http://localhost:8080/api/products/search',this.searchParameter).pipe(map((data: any) => {
-            console.log(data)
+    search(search:Search): Observable<Page> {
+        if(search.priceTo <= 0){
+            search.priceTo = null;
+        }
+        if(search.priceFrom <= 0){
+            search.priceFrom = null;
+        }
+        if(search.categoryType == null){
+            search.categoryType = this.categoryType;
+            this.categoryType = null
+        }
+        if(search.name == null ){
+            search.name = this.searchText;
+            this.searchText = null
+        }
+        return this.http.post('http://localhost:8080/api/products/search',search).pipe(map((data: any) => {
             return new Page(data.content,data.pageCount, data.page, data.pageSize, data.totalItem);
         }));
     }

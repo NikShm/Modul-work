@@ -94,6 +94,10 @@ header #toggler{
   display: none;
 }
 
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: var(--pink);
+}
+
 header .fa-bars{
   font-size: 3rem;
   color:#333;

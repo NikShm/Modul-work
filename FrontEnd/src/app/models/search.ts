@@ -11,10 +11,10 @@ export class Search {
         this.categoryType = categoryType;
     }
 
-    name : string;
+    name : any;
     brand : string;
-    priceFrom : number;
-    priceTo : number;
+    priceFrom : any;
+    priceTo : any;
     sortField : string;
     sortDirection : string;
     page : number;

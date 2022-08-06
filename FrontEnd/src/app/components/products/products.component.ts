@@ -2,12 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {Page} from "../../models/page";
-
 import {CartService} from "../../services/cart.service";
 import {FavouriteService} from "../../services/favourite.service";
-import { Router } from '@angular/router';
-import { Brand } from 'src/app/models/brand';
-import { BrandService } from 'src/app/services/brand.service';
+import {Search} from "../../models/search";
+import {Router} from '@angular/router';
+import {Brand} from 'src/app/models/brand';
 
 @Component({
     selector: 'app-products',
@@ -21,14 +20,7 @@ export class ProductsComponent implements OnInit {
     allProduct = 0;
     pageCount = 1;
     sortValue = "";
-    searchParameter = this.productService.getSearchParameter();//new Search(null, "", 0, 0, "name", "ASC", 0, 6, null);
-
-    ngOnInit(): void {
-        this.productService.getBrands().subscribe(val => {
-            this.brands = val;
-        });
-        this.search();
-    }
+    searchParameter = new Search(null, "", 0, 0, "name", "ASC", 0, 25, null);
 
     clear() {
         this.searchParameter.categoryType = null;
@@ -36,6 +28,8 @@ export class ProductsComponent implements OnInit {
         this.searchParameter.name = "";
         this.searchParameter.sortField = "name";
         this.searchParameter.sortDirection = "ASC";
+        this.searchParameter.priceFrom = 0;
+        this.searchParameter.priceTo = 0;
         this.sortValue = "";
     }
 
@@ -47,14 +41,27 @@ export class ProductsComponent implements OnInit {
         }
     }
 
+    setCategoryWithHeader(event: any) {
+        this.searchParameter.categoryType = event.target.name
+        this.apply()
+
+    }
+
+    getCategory() {
+        return this.searchParameter.categoryType;
+    }
+
+    apply() {
+        this.searchParameter.page = 0;
+        this.search();
+    }
+
     changePage(page: number) {
         this.searchParameter.page = page;
-        this.productService.setSearchParameter(this.searchParameter)
         this.search();
     }
 
     setSorted() {
-        this.searchParameter.page -= this.searchParameter.page == 0 ? 0 : 1;
         switch (this.sortValue) {
             case "NameUp": {
                 this.searchParameter.sortField = "name";
@@ -84,15 +91,11 @@ export class ProductsComponent implements OnInit {
 
     getFirst() {
         this.searchParameter.page = 0;
-        this.productService.setSearchParameter(this.searchParameter)
         this.search()
     }
 
     getLast() {
-        if (this.pageCount != 0) {
-            this.searchParameter.page = this.pageCount - 1;
-        }
-        this.productService.setSearchParameter(this.searchParameter)
+        this.searchParameter.page = this.pageCount - 1;
         this.search()
     }
 
@@ -104,11 +107,15 @@ export class ProductsComponent implements OnInit {
     }
 
     search() {
-        this.productService.search().subscribe((page: Page) => {
+        this.productService.search(this.searchParameter).subscribe((page: Page) => {
             this.products = page.products;
             this.allProduct = page.totalItem;
             this.pageCount = page.pageCount
         });
+    }
+
+    ngOnInit() {
+        this.search();
     }
 
     addToCart(product: Product) {
