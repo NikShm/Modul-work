@@ -54,7 +54,7 @@ export class ProductsComponent implements OnInit {
 
     apply() {
         this.searchParameter.page = 0;
-        this.productService.setSearchParameter(this.searchParameter)
+        this.productService.setSearchParameter(this.searchParameter)//localStorage.setItem("searchParameter", JSON.stringify(this.searchParameter))
         this.search();
     }
 
@@ -94,7 +94,7 @@ export class ProductsComponent implements OnInit {
 
     getFirst() {
         this.searchParameter.page = 0;
-        this.productService.setSearchPage(0);
+        this.productService.setSearchPage(0);//localStorage.setItem("searchParameter", JSON.parse(localStorage.getItem("searchParameter")!).page = '0')
         this.search()
     }
 

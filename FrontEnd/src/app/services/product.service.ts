@@ -96,7 +96,14 @@ export class ProductService {
     }
 
     setSearchParameter(search: Search) {
-        this.searchParameter = search;
+        this.searchParameter.name = search.name;
+        this.searchParameter.brand = search.brand;
+        this.searchParameter.priceFrom = search.priceFrom;
+        this.searchParameter.priceTo = search.priceTo;
+        this.searchParameter.sortField = search.sortField;
+        this.searchParameter.sortDirection = search.sortDirection;
+        this.searchParameter.page = search.page;
+        this.searchParameter.categoryType = search.categoryType;
     }
 
     setSearchPage(page: number) {
