@@ -35,7 +35,6 @@ input:focus, select:focus, textarea:focus {
 input[type=color] {
     height: 4.6rem;
     padding: 0.2rem;
-    cursor: pointer;
 }
 
 input[type=file] {
@@ -47,6 +46,7 @@ input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
     margin-bottom: 0;
     background: #fff1ee;
 }
+
 input[type=file].ng-touched.ng-invalid {
     margin-bottom: 1.5rem;
 }
@@ -54,14 +54,6 @@ input[type=file].ng-touched.ng-invalid {
 #buttons {
     padding-top: 3rem;
     text-align: end;
-}
-
-#edit {
-    background: #aa5377;
-}
-
-#edit:hover:enabled {
-    background: #8a3e55;
 }
 
 #edit:disabled {

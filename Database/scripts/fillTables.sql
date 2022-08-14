@@ -8,13 +8,16 @@ VALUES
     ('Estee Lauder'),
     ('Chanel'),
     ('Versace'),
-    ('Dior');
+    ('Dior'),
+    ('Matrix'),
+    ('Schwarzkopf Professional'),
+    ('Kerastase');
 
-INSERT INTO person (role, login, password,firstname,lastname)
+INSERT INTO person (role, login, password)
 VALUES
-    ('ADMIN', 'admin-yuliana', 'yuliana-admin', 'Yuliana', 'Bilack'),
-    ('ADMIN', 'admin-emiliia', 'emilia-admin', 'Emilia', 'Dragomirecha'),
-    ('ADMIN', 'admin-mykola', 'mykola-admin', 'Mykola', 'Shumeyko');
+    ('ADMIN', 'admin-yuliana', 'yuliana-admin'),
+    ('ADMIN', 'admin-emiliia', 'emiliia-admin'),
+    ('ADMIN', 'admin-mykola', 'mykola-admin');
 
 INSERT INTO product (name, description, brandId, price, category, color, volume, photoPath)
 VALUES
@@ -74,4 +77,34 @@ The opening note of the fragrance opens with sensual neroli, tonic lemon peel an
     ('Allure', 'Chanel Allure fragrance is an exquisite and emotional burst of sensuality and allure. Created by Chanel in 1996, this fragrance impressed all women with its, unlike its predecessor, bouquet consisting of lemon and bourbon vanilla, vetiver, May rose and jasmine.', 7, 135.33, 'PERFUMERY', '#fef6e9', '50 ml', 'assets/images/perfumery/perfumery33.png'),
     ('Bleu de Chanel Eau de Parfum', 'The composition of the fragrance combines charming woody chords, supported by spicy oriental sounds and enticing citrus splashes.
 The opening note attracts and envelops in a cloud of oriental sound, unfolding into mystical labdanum, sensual sandalwood and sweet patchouli leaves, spiced with ginger and nutmeg. Noble vetiver reigns in the "heart" of the composition, citrus aromas intertwine with woody streams, which are carefully distinguished by mint and jasmine.', 7, 105.52, 'PERFUMERY', '#1b262c', '50 ml', 'assets/images/perfumery/perfumery34.png'),
-    ('N5', 'Chanel N5 is a timeless classic. This bouquet can be considered innovative, because it used aldehydes for the first time in order to slightly calm down the very rich aroma of flowers. This fragrance from Chanel is unique and unique. It attracts, shocks, mesmerizes, inspires... The unique bouquet of jasmine, roses and lilies of the valley was designed to become the most recognizable and respected perfume of all time.', 7, 117.55, 'PERFUMERY', '#fdb002', '35 ml', 'assets/images/perfumery/perfumery35.png');
+    ('N5', 'Chanel N5 is a timeless classic. This bouquet can be considered innovative, because it used aldehydes for the first time in order to slightly calm down the very rich aroma of flowers. This fragrance from Chanel is unique and unique. It attracts, shocks, mesmerizes, inspires... The unique bouquet of jasmine, roses and lilies of the valley was designed to become the most recognizable and respected perfume of all time.', 7, 117.55, 'PERFUMERY', '#fdb002', '35 ml', 'assets/images/perfumery/perfumery35.png'),
+    ('N19', '', 7, 171.36, 'PERFUMERY', '#c4dcb8', '100 ml', 'assets/images/perfumery/perfumery36.png'),
+    ('Gabrielle Purse Spray', '', 7, 91.42, 'PERFUMERY', '#f1ece8', '60 ml', 'assets/images/perfumery/perfumery37.png'),
+    ('Cinnabar', '', 6, 70.53, 'PERFUMERY', '#ffa300', '50 ml', 'assets/images/perfumery/perfumery38.png'),
+    ('Bronze Goddess Eau Fraiche', '', 6, 94.95, 'PERFUMERY', '#fcfee9', '100 ml', 'assets/images/perfumery/perfumery39.png'),
+    ('Pleasures Intense', '', 6, 127.28, 'PERFUMERY', '#f8e1eb', '100 ml', 'assets/images/perfumery/perfumery40.png'),
+    ('Restorative Shampoo', '', 2, 2.25, 'HAIR', '#ffffff', '250 ml', 'assets/images/hair/hair41.png'),
+    ('Shampoo for dyed hair', '', 2, 10.72, 'HAIR', '#ffffff', '300 ml', 'assets/images/hair/hair42.png'),
+    ('Permanent hair dye', '', 10, 6.05, 'HAIR', '#b19c7f', '90 ml', 'assets/images/hair/hair43.png'),
+    ('Hair dye', '', 11, 6.89, 'HAIR', '#2f2818', '60 ml', 'assets/images/hair/hair44.png'),
+    ('Lightening hair dye', '', 10, 6.37, 'HAIR', '#cdbdb0', '90 ml', 'assets/images/hair/hair45.png'),
+    ('Cream mask for hair nourishment', '', 10, 13.27, 'HAIR', '#ffffff', '500 ml', 'assets/images/hair/hair46.png'),
+    ('Mask for intensive restoration of damaged hair', '', 2, 16.66, 'HAIR', '#f1d6b8', '250 ml', 'assets/images/hair/hair47.png'),
+    ('Lightening cream for hair', '', 11, 8.11, 'HAIR', '#ffffff', '60 ml', 'assets/images/hair/hair48.png'),
+    ('Hair dye for shine', '', 2, 11.37, 'HAIR', '#8e7a6f', '60 ml', 'assets/images/hair/hair49.png'),
+    ('Micellar cleansing conditioner', '', 11, 12.10, 'HAIR', '#ffffff', '200 ml', 'assets/images/hair/hair50.png'),
+    ('Conditioner for fine and normal hair', '', 11, 12.32, 'HAIR', '#ffffff', '250 ml', 'assets/images/hair/hair51.png'),
+    ('Balm for colored hair', '', 2, 3.91, 'HAIR', '#ffffff', '180 ml', 'assets/images/hair/hair52.png'),
+    ('Universal thermal protective oil', '', 12, 33.77, 'HAIR', '#edd99c', '100 ml', 'assets/images/hair/hair53.png'),
+    ('Strengthening hair oil Indian Amla', '', 10, 9.33, 'HAIR', '#ffe7a1', '150 ml', 'assets/images/hair/hair54.png'),
+    ('Smoothing heat protective oil for unruly hair', '', 2, 13.67, 'HAIR', '#f8eaf7', '125 ml', 'assets/images/hair/hair55.png'),
+    ('Strengthening oil for lightened or highlighted hair', '', 12, 27.94, 'HAIR', '#eae9ef', '100 ml', 'assets/images/hair/hair56.png'),
+    ('Night serum for hair nourishment', '', 12, 32.09, 'HAIR', '#fdf1e3', '90 ml', 'assets/images/hair/hair57.png'),
+    ('Restorative mask for damaged lightened or highlighted hair', '', 12, 27.94, 'HAIR', '#ffffff', '200 ml', 'assets/images/hair/hair58.png'),
+    ('Bath Shampoo to give volume to thin hair', '', 12, 17.42, 'HAIR', '#ffffff', '250 ml', 'assets/images/hair/hair59.png'),
+    ('Extra strong hold hairspray', '', 11, 8.84, 'HAIR', '#ffffff', '500 ml', 'assets/images/hair/hair60.png'),
+    ('Moisturizing face cream', '', 7, 83.28, 'FACE', '#dee6e9', '50 g', 'assets/images/face/face61.png'),
+    ('Sublimage Le Teint Foundation', '', 7, 14.84, 'FACE', '#ebd3b9', '5 ml', 'assets/images/face/face62.png'),
+    ('Pore tightening serum', '', 6, 77.31, 'FACE', '#57a7a6', '50 ml', 'assets/images/face/face63.png'),
+    ('Multifunctional protective cream', '', 6, 33.37, 'FACE', '#eaeff2', '30 ml', 'assets/images/face/face64.png'),
+    ('Perfect Teint Concealer', '', 3, 10.23, 'FACE', '#dec9b8', '2 ml', 'assets/images/face/face65.png');

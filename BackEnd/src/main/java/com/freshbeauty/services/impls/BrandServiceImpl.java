@@ -1,6 +1,8 @@
 package com.freshbeauty.services.impls;
 
 import com.freshbeauty.dto.BrandDTO;
+import com.freshbeauty.entities.Brand;
+import com.freshbeauty.exceptions.DatabaseFetchException;
 import com.freshbeauty.mappers.BrandMapper;
 import com.freshbeauty.services.IBrandService;
 import com.freshbeauty.repositories.BrandRepository;
@@ -33,6 +35,6 @@ public class BrandServiceImpl implements IBrandService {
 
     @Override
     public BrandDTO getOne(Integer id) {
-        return mapper.toDto(repository.findById(id).orElse(null));
+        return mapper.toDto(repository.findById(id).orElseThrow(() -> new DatabaseFetchException(id, Brand.class.getSimpleName())));
     }
 }

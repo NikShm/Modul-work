@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
@@ -27,6 +27,8 @@ import {ProductService} from "./services/product.service";
 import {BrandService} from "./services/brand.service";
 import {CartService} from "./services/cart.service";
 import {FavouriteService} from "./services/favourite.service";
+import { GlobalHttpInterceptorService } from './services/global-http-interceptor.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import {FavouriteService} from "./services/favourite.service";
     ProductInfoComponent,
     ProductFormComponent,
     TrimDirective,
-    FileValidatorDirective
+    FileValidatorDirective,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import {FavouriteService} from "./services/favourite.service";
       ProductService,
       BrandService,
       CartService,
-      FavouriteService
+      FavouriteService,
+      { provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,69 +1,68 @@
 <app-header (saveCategory)="setCategoryWithHeader($event)"></app-header>
 
 <section class="products" id="products">
+
   <div class="aboutHeading">
     <h1>Products</h1>
     <button id="add-product" (click)="openCreatePage()">
       <i [ngClass]="classCreateButton"></i>
     </button>
   </div>
+
   <div class="container">
-    <div class="search-container-products" style="margin-bottom: 400px">
+
+    <div class="search-container" style="margin-bottom: 400px">
       <form action="#">
-        <input [(ngModel)]="searchParameter.name" type="text" autocomplete="off"
-               placeholder="Search..." name="search">
-        <button (click)="changePage(0)" type="submit"><i
-                class="fa fa-search"></i></button>
+        <input [(ngModel)]="searchParameter.name" type="text" autocomplete="off" placeholder="Search..." name="search">
+        <button (click)="apply()" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
       </form>
     </div>
-    <div class="side-menu" style="margin-top: -400px">
-      <div class="col-lg-3 blog-form">
-        <h2 class="blog-sidebar-title"><b>Filters</b></h2>
-        <hr style="width: 300px;">
-        <form class="dropdownS" action="#">
-          <select name="cars" [(ngModel)]="searchParameter.brand">
-            <option value="" disabled selected hidden>Brand</option>
-            <option *ngFor="let brand of brands" [ngValue]="brand.name">{{brand.name}}</option>
-          </select>
-        </form>
-        <form class="dropdownS" action="#">
-          <select name="cars" [value]="getCategory()" (change)="setCategory($event)">
-            <option value="null">Categories</option>
-            <option value="PERFUMERY">Perfumery</option>
-            <option value="MAKEUP">Makeup</option>
-            <option value="HAIR">Hair</option>
-            <option value="FACE">Face</option>
-            <option value="BODY_AND_BATH">Body and bath</option>
-            <option value="FOR_MEN">For men</option>
-          </select>
-        </form>
-        <form class="dropdownS" action="#">
-          <select name="cars" [(ngModel)]="sortValue" (change)="setSorted()">
-            <option value="" >Sort by</option>
-            <option value="NameUp">Name A to Z</option>
-            <option value="NameDown">Name Z to A</option>
-            <option value="PriceUp">From cheap to expensive</option>
-            <option value="PriceDown" >From expensive to cheap</option>
-          </select>
-        </form>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
 
-        <h2 class="blog-sidebar-title"><b>Price</b></h2>
-        <hr style="width: 300px;">
-        <div style="margin-top: 5px;">
-          <input type="number" [(ngModel)]="searchParameter.priceFrom" autocomplete="off"
-                 style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px" placeholder="0" name="search" [min]="0" [step]="1">
-          <input type="number" [(ngModel)]="searchParameter.priceTo" autocomplete="off" style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px"
-                 placeholder="0" name="search" [min]="0" [step]="1">
-        </div>
-        <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="apply()"><p style="margin-left: -10px">Apply</p></button>
-        <button type="button" style="width: 95px;" class="btn btn-dark btn-lg" (click)="clear()"><p style="margin-left: -8px">Clear</p></button>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+    <div class="side-menu" style="margin-top: -400px">
+      
+      <h2 class="blog-sidebar-title">Filter by</h2>
+
+      <select name="cars" [(ngModel)]="searchParameter.brand">
+        <option value="">Brands (All)</option>
+        <option *ngFor="let brand of brands" [ngValue]="brand.name">{{brand.name}}</option>
+      </select>
+      
+      <select name="cars" [value]="getCategory()" (change)="setCategory($event)">
+        <option value="null">Categories (All)</option>
+        <option value="PERFUMERY">Perfumery</option>
+        <option value="MAKEUP">Makeup</option>
+        <option value="HAIR">Hair</option>
+        <option value="FACE">Face</option>
+        <option value="BODY_AND_BATH">Body and bath</option>
+        <option value="FOR_MEN">For men</option>
+      </select>
+      
+      <h2 class="blog-sidebar-title">Sort by</h2>
+     
+      <select name="cars" [(ngModel)]="sortValue" (change)="setSorted()">
+        <option value="NameUp" selected>Name A to Z</option>
+        <option value="NameDown">Name Z to A</option>
+        <option value="PriceUp">Price Low to High</option>
+        <option value="PriceDown" >Price High to Low</option>
+      </select>
+      
+      <h2 class="blog-sidebar-title">Price range</h2>
+
+      <div>
+        <input type="number" [(ngModel)]="searchParameter.priceFrom" autocomplete="off"
+                style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px" placeholder="from" name="search" [min]="0" [step]="1">
+        <input type="number" [(ngModel)]="searchParameter.priceTo" autocomplete="off" style="width: 95px; margin-right: 10px; border: solid 1px #8f4461; border-radius: 30px; padding: 8px; font-size: 14px"
+                placeholder="to" name="search" [min]="0" [step]="1">
       </div>
+
+      <button type="button" style="width: 95px; margin-right: 10px" class="btn btn-dark btn-lg" (click)="apply()"><p style="margin-left: -10px">Apply</p></button>
+      <button type="button" style="width: 95px;" class="btn btn-dark btn-lg" (click)="clear()"><p style="margin-left: -8px">Clear</p></button>
+        
     </div>
-    <div class="box-container"  style="margin-top: -250px">
+
+    <div class="box-container">
 
       <div class="box" *ngFor="let product of products | paginate: {itemsPerPage: searchParameter.pageSize, currentPage: searchParameter.page + 1, totalItems: allProduct}">
         <div class="image">
@@ -79,9 +78,11 @@
           <div class="price"> {{product.price | currency:'USD'}}</div>
         </div>
       </div>
-      </div>
-    <div style="width: 700px; margin: auto; background-color: #fff; margin-bottom: 50px; margin-top: 50px; margin-bottom: 130px">
-      <div style=" position: relative; margin: auto; font-size: 16px; margin-top: 20px">
+
+    </div>
+
+    <div style="width: 700px; background-color: #fff; margin: 50px auto auto;">
+      <div style=" position: relative; font-size: 16px; margin: 20px auto auto;">
         <button style="width: 150px; font-size: 16px; margin-top: -5px; float: left" class="btn btn-dark btn-lg" (click)="getFirst()">First Page</button>
         <div style="width: 400px; text-align: center; background-color: #fff; margin: auto;">
           <pagination-controls previousLabel="Previous"
@@ -95,7 +96,6 @@
       </div>
     </div>
   </div>
-
 
 </section>
 

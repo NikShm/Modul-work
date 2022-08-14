@@ -10,7 +10,7 @@ import {User} from "../../../models/user";
 })
 export class HeaderComponent implements OnInit {
 
-    logo = "fa-user";//fa-sign-out-alt
+    logo = "fa-user";
     user: User = {login: "user", role: "CUSTOMER"};
 
   search(event:any) {

@@ -45,3 +45,10 @@ section {
         font-size: 16px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .info {
+        flex: 1;
+        text-align: center;
+    }
+}

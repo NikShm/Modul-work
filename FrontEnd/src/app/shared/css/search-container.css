@@ -1,0 +1,19 @@
+.search-container input {
+    padding-left: 15px;
+    padding-right: 45px;
+    border: 3px solid #aa5377;
+    border-radius: 30px;
+}
+  
+.search-container button {
+    padding: 6px 10px;
+    background: transparent;
+    font-size: 17px;
+    border-radius: 32px;
+    margin-left: -47px;
+}
+  
+.search-container button:hover {
+    transform: rotate(360deg);
+    transition: 1s;
+}
