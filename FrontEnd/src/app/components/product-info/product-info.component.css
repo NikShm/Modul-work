@@ -49,7 +49,7 @@ i {
     z-index: 1;
     border-radius: 1rem;
     left: -16rem;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
     background-color: white;
 }
 
@@ -104,11 +104,6 @@ i {
 
 .btn {
     margin-top: 3rem;
-    background: #aa5377;
-}
-
-.btn:hover {
-    background: #8a3e55;
 }
 
 @media screen and (max-width: 991px) {

@@ -11,17 +11,16 @@ import {Brand} from 'src/app/models/brand';
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css']
+    styleUrls: ['../../shared/css/search-container.css','../../shared/css/products-container.css', './products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
     products: Product[] = [];
     brands: Brand[] = [];
     allProduct = 0;
     pageCount = 1;
-    sortValue = "";
+    sortValue = "NameUp";
     classCreateButton = "";
-    searchParameter = new Search(null, "", 0, 0, "name", "ASC", 0, 25, null);
+    searchParameter = new Search("", "", 0, 0, "name", "ASC", 0, 25, null);
 
     clear() {
         this.searchParameter.categoryType = null;
@@ -31,7 +30,7 @@ export class ProductsComponent implements OnInit {
         this.searchParameter.sortDirection = "ASC";
         this.searchParameter.priceFrom = 0;
         this.searchParameter.priceTo = 0;
-        this.sortValue = "";
+        this.sortValue = "NameUp";
     }
 
     setCategory(event: any) {
@@ -45,7 +44,6 @@ export class ProductsComponent implements OnInit {
     setCategoryWithHeader(event: any) {
         this.searchParameter.categoryType = event.target.name
         this.apply()
-
     }
 
     getCategory() {
@@ -53,8 +51,9 @@ export class ProductsComponent implements OnInit {
     }
 
     apply() {
+        this.searchParameter.name = this.searchParameter.name.trim();
         this.searchParameter.page = 0;
-        this.productService.setSearchParameter(this.searchParameter)//localStorage.setItem("searchParameter", JSON.stringify(this.searchParameter))
+        this.productService.setSearchParameter(this.searchParameter);
         this.search();
     }
 
@@ -94,7 +93,7 @@ export class ProductsComponent implements OnInit {
 
     getFirst() {
         this.searchParameter.page = 0;
-        this.productService.setSearchPage(0);//localStorage.setItem("searchParameter", JSON.parse(localStorage.getItem("searchParameter")!).page = '0')
+        this.productService.setSearchPage(0);
         this.search()
     }
 

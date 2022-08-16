@@ -7,8 +7,7 @@ section{
   align-items: center;
   gap:2rem;
   flex-wrap: wrap;
-  padding:2rem 0;
-  padding-bottom: 3rem;
+  padding: 2rem 0 3rem;
 }
 
 .about .row .video-container{
@@ -28,8 +27,7 @@ section{
 .about .row .content p{
   font-size: 16px;
   color:rgb(99, 99, 99);
-  padding:.5rem 0;
-  padding-top: 1rem;
+  padding: 1rem 0 .5rem;
   line-height: 1.5;
 }
 

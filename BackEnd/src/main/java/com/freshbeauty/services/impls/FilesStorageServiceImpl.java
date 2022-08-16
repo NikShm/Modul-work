@@ -20,6 +20,7 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class FilesStorageServiceImpl implements IFilesStorageService {
     private final Path root = Paths.get("FrontEnd/src");
+
     @Override
     public void save(MultipartFile file, String path) throws IOException {
         Files.copy(file.getInputStream(), this.root.resolve(path));

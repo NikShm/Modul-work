@@ -41,7 +41,6 @@ header {
 .dropdown-content-nav a {
     margin-bottom: 1.5rem;
     display: block;
-    cursor: pointer;
 }
 
 #toggler {
@@ -136,6 +135,30 @@ header {
         display: block;
         overflow: visible;
     }
+
+    .dropdown-nav {
+        width: 100%;
+    }
+
+    .dropdown-content-nav {
+        position: relative;
+        display: block;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .dropdown-nav>a {
+        margin-top: 0;
+        background-color: rgb(199, 197, 197);
+    }
+
+    .dropdown-content-nav a:last-child {
+        margin-bottom: 0;
+    }
+
+    .dropdown-content-nav a {
+        background-color: #ddd;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -157,3 +180,27 @@ header {
         margin-right: 1.5rem;
     }
 }
+
+@media screen and (min-width:768px) {
+    .dropdown-content-nav a:first-child {
+        padding-top: 0.5rem;
+    }
+
+    .dropdown-content-nav a:first-child:hover {
+        border-radius: 3rem 3rem 0 0;
+    }
+
+    .dropdown-content-nav a:last-child {
+        padding-bottom: 0.5rem;
+        margin-bottom: 0;
+    }
+
+    .dropdown-content-nav a:last-child:hover {
+        border-radius: 0 0 3rem 3rem;
+    }
+
+    .dropdown-content-nav a:hover {
+        background-color: #ddd;
+        border-radius: 0 3rem;
+    }
+} 

@@ -8,7 +8,7 @@ import {FavouriteService} from "../../services/favourite.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['../../shared/css/search-container.css', '../../shared/css/products-container.css', './home.component.css']
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   searchText = "";
 
   search() {
+    this.searchText = this.searchText.trim();
     this.productService.searchHomePage(this.searchText)
     this.router.navigate(["/","products"])
   }
@@ -39,5 +40,4 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.productService.getLastProduct().subscribe((data: Product[]) => {this.products=data;});
   }
-
 }

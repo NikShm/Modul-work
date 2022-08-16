@@ -8,6 +8,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ProductComponent } from './components/product/product.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
   { path: 'products/new', component: ProductFormComponent },
   { path: 'products/:id', component: ProductComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'favourite', component: FavouriteComponent }
+  { path: 'favourite', component: FavouriteComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({

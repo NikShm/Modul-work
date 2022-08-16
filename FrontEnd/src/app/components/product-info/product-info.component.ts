@@ -7,7 +7,7 @@ import {CartService} from "../../services/cart.service";
 @Component({
     selector: 'app-product-info',
     templateUrl: './product-info.component.html',
-    styleUrls: ['../../shared/css/product.css', './product-info.component.css']
+    styleUrls: ['../product/product.component.css', './product-info.component.css']
 })
 export class ProductInfoComponent implements OnInit {
     @Input() product!: Product;
@@ -36,19 +36,19 @@ export class ProductInfoComponent implements OnInit {
         }
     }
 
-  @HostListener('window:click', ['$event'])
-  public onClick(event: MouseEvent) {
-    if (!(<HTMLElement>event.target).matches('#actions')) {
-      const dropdown = document.getElementById("dropdown-content-actions");
-      const button = document.getElementById("actions");
-      if (dropdown?.classList.contains('show')) {
-        dropdown.classList.remove('show');
-      }
-      if (button?.classList.contains('btn-dropdown-active')) {
-        button.classList.remove('btn-dropdown-active');
+    @HostListener('window:click', ['$event'])
+    public onClick(event: MouseEvent) {
+      if (!(<HTMLElement>event.target).matches('#actions')) {
+        const dropdown = document.getElementById("dropdown-content-actions");
+        const button = document.getElementById("actions");
+        if (dropdown?.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+        if (button?.classList.contains('btn-dropdown-active')) {
+          button.classList.remove('btn-dropdown-active');
+        }
       }
     }
-  }
 
     @Output() onEdit = new EventEmitter<boolean>();
 

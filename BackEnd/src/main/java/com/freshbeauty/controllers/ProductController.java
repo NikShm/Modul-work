@@ -62,7 +62,7 @@ public class ProductController {
 
     @PutMapping( "/update/")
     public void update(@RequestBody ProductDTO productDTO) throws IOException {
-        this.service.update(productDTO);
+        service.update(productDTO);
     }
 
     @PostMapping("/uploadPhoto/")
@@ -70,16 +70,16 @@ public class ProductController {
                        @RequestParam(required = false) String oldPath,
                        @RequestParam(required = false) Integer id) throws IOException {
         if (oldPath != null) {
-            this.fileService.delete(oldPath);
+            fileService.delete(oldPath);
         }
-        this.fileService.save(photo, newPath);
+        fileService.save(photo, newPath);
         if (id != null) {
-            this.service.updatePhotoPath(id, newPath);
+            service.updatePhotoPath(id, newPath);
         }
     }
 
     @PostMapping("/create/")
     public Integer create(@RequestBody ProductDTO productDTO) {
-        return this.service.create(productDTO);
+        return service.create(productDTO);
     }
 }

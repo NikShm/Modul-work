@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['../../shared/css/product.css', './product-form.component.css']
+  styleUrls: ['../product/product.component.css', './product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
   @Input() product: Product = new Product();
@@ -18,9 +18,14 @@ export class ProductFormComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.productService.getBrands().subscribe(val => {
+    if (JSON.parse(localStorage.getItem("user")!).role !== "ADMIN"){
+      this.router.navigate(['/login']);
+    } 
+    else {
+      this.productService.getBrands().subscribe(val => {
         this.brands = val;
-    });
+      });
+    }
   }
 
   exit() {

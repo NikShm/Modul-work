@@ -5,6 +5,7 @@ import com.freshbeauty.dto.ProductDTO;
 import com.freshbeauty.dto.SearchDTO;
 import com.freshbeauty.enums.SortDirection;
 import com.freshbeauty.entities.Product;
+import com.freshbeauty.exceptions.DatabaseFetchException;
 import com.freshbeauty.mappers.ProductMapper;
 import com.freshbeauty.repositories.ProductRepository;
 import com.freshbeauty.services.IProductService;
@@ -51,12 +52,12 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public ProductDTO getOne(Integer id) {
-        return repository.findById(id).map(mapper::toDto).orElse(null);
+        return repository.findById(id).map(mapper::toDto).orElseThrow(() -> new DatabaseFetchException(id, Product.class.getSimpleName()));
     }
 
     @Override
     public void update(ProductDTO dto) throws IOException {
-        Product productToUpdate = repository.findById(dto.getId()).orElse(null);
+        Product productToUpdate = repository.findById(dto.getId()).orElseThrow(() -> new DatabaseFetchException(dto.getId(), Product.class.getSimpleName()));
         if (!filesService.exists(dto.getPhotoPath()) && dto.getCategory() != productToUpdate.getCategory()) {
             this.filesService.move(productToUpdate.getPhotoPath(), dto.getPhotoPath());
         }
@@ -73,13 +74,14 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public void updatePhotoPath(Integer id, String newPath) {
-        Product productToUpdate = repository.findById(id).orElse(null);
+        Product productToUpdate = repository.findById(id).orElseThrow(() -> new DatabaseFetchException(id, Product.class.getSimpleName()));
         productToUpdate.setPhotoPath(newPath);
         repository.save(productToUpdate);
     }
+
     @Override
     public void delete(Integer id) throws IOException {
-        Product productToDelete = repository.findById(id).orElse(null);
+        Product productToDelete = repository.findById(id).orElseThrow(() -> new DatabaseFetchException(id, Product.class.getSimpleName()));
         this.filesService.delete(productToDelete.getPhotoPath());
         repository.deleteById(id);
     }
