@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @since 01.08.2022 - 16.59
 */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://api.besida.cf", "https://demo.besida.cf"})
 @RequestMapping(value = "/api/user", produces = "application/json")
 public class PersonController {
     private final PersonServiceImpl service;
