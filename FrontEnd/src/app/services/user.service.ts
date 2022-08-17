@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Product} from "../models/product";
+import {GlobalConstants} from "./global-constants";
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserService {
     }
 
     getUser(login: string, password:string): Observable<User> {
-        return this.http.get<User>('http://localhost:8080/api/user/login=' + login + "/password=" + password).pipe(map((data: any) => {
+        return this.http.get<User>(GlobalConstants.apiURL + '/api/user/login=' + login + "/password=" + password).pipe(map((data: any) => {
             if(data != null) {
                 return new User(data);
             }

@@ -21,7 +21,7 @@ import java.util.List;
  * @since 7/6/2022 - 20.21
  **/
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://api.besida.cf", "https://demo.besida.cf"})
 @RequestMapping(value = "/api/products", produces = "application/json")
 public class ProductController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);

@@ -7,7 +7,7 @@ import com.freshbeauty.services.impls.BrandServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://api.besida.cf", "https://demo.besida.cf"})
 @RequestMapping(value = "/api/brands", produces = "application/json")
 public class BrandController {
     private final BrandServiceImpl service;
