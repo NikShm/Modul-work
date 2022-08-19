@@ -1,6 +1,7 @@
 package com.freshbeauty.services.impls;
 
 import com.freshbeauty.services.IFilesStorageService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +20,11 @@ import java.nio.file.StandardCopyOption;
  **/
 @Service
 public class FilesStorageServiceImpl implements IFilesStorageService {
-    private final Path root = Paths.get("FrontEnd/src");
+    private final Path root;
+
+    public FilesStorageServiceImpl(@Value("${file.storage}") String path) {
+        root = Paths.get(path);
+    }
 
     @Override
     public void save(MultipartFile file, String path) throws IOException {
